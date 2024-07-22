@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import DrawerHeader from "./DrawerHeader";
-import NavbarHeader from "./NavbarHeader";
+import HeaderDrawer from "./HeaderDrawer";
+import HeaderNav from "./HeaderNav";
 import SessionManager from "./SessionManager";
 import { useLocation } from "react-router-dom";
 
@@ -46,12 +46,12 @@ export default function Header() {
         <span className="text-2xl font-thin">{pageTitle}</span>
       </div>
       <div className="hidden lg:block">
-        <NavbarHeader pageTitle={pageTitle} />
+        <HeaderNav pageTitle={pageTitle} />
       </div>
       {/* <div className="hidden lg:block">
         <SessionManager />
       </div> */}
-      <DrawerHeader
+      <HeaderDrawer
         isDrawerOpen={isDrawerOpen}
         toggleDrawer={toggleDrawer}
       />

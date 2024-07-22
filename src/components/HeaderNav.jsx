@@ -2,7 +2,7 @@ import React from "react";
 // import { useAuth } from "./AuthContext";
 import { Link } from "react-router-dom";
 
-export default function NavbarHeader({ pageTitle }) {
+export default function HeaderNav({ pageTitle }) {
   return (
     <nav className="navbar">
       <Link

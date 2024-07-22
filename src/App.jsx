@@ -8,6 +8,12 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./index.css";
 
 const Home = lazy(() => import("./components/Home"));
+const Profile = lazy(() => import("./components/Profile"));
+const TownHall = lazy(() => import("./components/TownHall"));
+const SpeakersCorner = lazy(() => import("./components/SpeakersCorner"));
+const Community = lazy(() => import("./components/Community"));
+const Messages = lazy(() => import("./components/Messages"));
+const Protests = lazy(() => import("./components/Protests"));
 
 export default function App() {
   return (
@@ -25,6 +31,30 @@ export default function App() {
             <Route
               path="/"
               element={<Home />}
+            />
+            <Route
+              path="/profile"
+              element={<Profile />}
+            />
+            <Route
+              path="/town-hall"
+              element={<TownHall />}
+            />
+            <Route
+              path="/speakers-corner"
+              element={<SpeakersCorner />}
+            />
+            <Route
+              path="/community"
+              element={<Community />}
+            />
+            <Route
+              path="/messages"
+              element={<Messages />}
+            />
+            <Route
+              path="/protests"
+              element={<Protests />}
             />
             <Route
               path="/*"

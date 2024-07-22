@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HeaderDrawer from "./HeaderDrawer";
 import HeaderNav from "./HeaderNav";
-import SessionManager from "./SessionManager";
+// import SessionManager from "./SessionManager";
 import { useLocation } from "react-router-dom";
 
 export default function Header() {

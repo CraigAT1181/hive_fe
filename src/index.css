@@ -4,3 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.home-container {
+  @apply flex justify-center;
+}

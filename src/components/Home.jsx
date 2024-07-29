@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Home() {
+export default function NationalLiveFeed() {
   return (
     <div className="home-container">
-      <p>Home working!</p>
+      <p>National Live Feed working!</p>
     </div>
   );
 }

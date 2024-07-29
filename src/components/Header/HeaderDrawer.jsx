@@ -139,7 +139,7 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
           </Link>
           <Link
             to="/settings"
-            className="drawer-nav-item-settings"
+            className="drawer-nav-item"
             onClick={toggleDrawer}
           >
             <div className="flex mt-16">

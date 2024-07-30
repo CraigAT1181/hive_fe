@@ -12,7 +12,7 @@ export default function Header() {
 
   useEffect(() => {
     const path =
-      location.pathname.substring(1).toUpperCase() || "National Live Feed";
+      location.pathname.substring(1).toUpperCase() || "NATIONAL DISCUSSION";
 
     const title = path.split("-").join(" ");
 
@@ -25,40 +25,45 @@ export default function Header() {
 
   return (
     <header className="header">
+      <div className="hidden lg:block"></div>
       <div className="flex items-center lg:hidden">
-        <button onClick={toggleDrawer} className="hamburger ml-1">
+        <button
+          onClick={toggleDrawer}
+          className="hamburger ml-1">
           <svg
             className="w-6 h-6"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+            xmlns="http://www.w3.org/2000/svg">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
+              d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
       </div>
       <div className="flex flex-grow justify-center lg:hidden">
         <span className="text-2xl font-thin">{pageTitle}</span>
       </div>
-      <div className="flex items-center justify-center">
+
+      <div className="hidden lg:block">
+        <HeaderNav pageTitle={pageTitle} />
+      </div>
+      <div className="flex items-center justify-center relative">
         <div>
           <i className="fa-solid fa-2xl fa-circle-nodes"></i>
           <p className="font-semibold m-0 mt-1">Hive</p>
         </div>
       </div>
-      <div className="hidden lg:block">
-        <HeaderNav pageTitle={pageTitle} />
-      </div>
       {/* <div className="hidden lg:block">
         <SessionManager />
       </div> */}
-      <HeaderDrawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
+      <HeaderDrawer
+        isDrawerOpen={isDrawerOpen}
+        toggleDrawer={toggleDrawer}
+      />
     </header>
   );
 }

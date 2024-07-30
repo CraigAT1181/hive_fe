@@ -10,28 +10,32 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
       className={`drawer-secondary transform ${
         isDrawerOpen ? "translate-x-0" : "-translate-x-full"
       } transition-transform`}
-      onClick={toggleDrawer}
-    >
-      <div className="drawer-primary" onClick={(e) => e.stopPropagation()}>
-        <button onClick={toggleDrawer} className="drawer-close">
+      onClick={toggleDrawer}>
+      <div
+        className="drawer-primary"
+        onClick={(e) => e.stopPropagation()}>
+        <button
+          onClick={toggleDrawer}
+          className="drawer-close">
           <svg
             className="w-6 h-6"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+            xmlns="http://www.w3.org/2000/svg">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              d="M6 18L18 6M6 6l12 12"
-            ></path>
+              d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
         <div className="drawer-user-section">
           <div>
-            <img className="profile-icon" alt="" />
+            <img
+              className="profile-icon"
+              alt=""
+            />
           </div>
           <div>
             <p className="mb-0">CraigT</p>
@@ -42,38 +46,22 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
         <hr />
         <nav className="drawer-nav">
           <Link
-            to="/profile"
+            to="/"
             className="drawer-nav-item"
-            onClick={toggleDrawer}
-          >
+            onClick={toggleDrawer}>
             <div className="flex">
               <div className="mr-4 w-6">
-                <i className="fa-solid fa-user"></i>
+                <i className="fa-solid fa-tower-broadcast"></i>
               </div>
               <div>
-                <p className="mb-0 font-semibold">Profile</p>
-              </div>
-            </div>
-          </Link>
-          <Link
-            to="/town-hall"
-            className="drawer-nav-item"
-            onClick={toggleDrawer}
-          >
-            <div className="flex">
-              <div className="mr-4 w-6">
-                <i className="fa-solid fa-house-flag"></i>
-              </div>
-              <div>
-                <p className="mb-0 font-semibold">Town Hall</p>
+                <p className="mb-0 font-semibold">National Discussion</p>
               </div>
             </div>
           </Link>
           <Link
             to="/speakers-corner"
             className="drawer-nav-item"
-            onClick={toggleDrawer}
-          >
+            onClick={toggleDrawer}>
             <div className="flex">
               <div className="mr-4 w-6">
                 <i className="fa-solid fa-microphone"></i>
@@ -86,8 +74,7 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
           <Link
             to="/community"
             className="drawer-nav-item"
-            onClick={toggleDrawer}
-          >
+            onClick={toggleDrawer}>
             <div className="flex">
               <div className="mr-4 w-6">
                 <i className="fa-solid fa-users-line"></i>
@@ -98,25 +85,22 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
             </div>
           </Link>
           <Link
-            to="/messages"
+            to="/town-hall"
             className="drawer-nav-item"
-            onClick={toggleDrawer}
-          >
+            onClick={toggleDrawer}>
             <div className="flex">
               <div className="mr-4 w-6">
-                <i className="fa-solid fa-envelope"></i>
+                <i className="fa-solid fa-house-flag"></i>
               </div>
               <div>
-                <p className="mb-0 font-semibold">Messages</p>
+                <p className="mb-0 font-semibold">Town Hall</p>
               </div>
             </div>
           </Link>
-
           <Link
             to="/protests"
             className="drawer-nav-item"
-            onClick={toggleDrawer}
-          >
+            onClick={toggleDrawer}>
             <div className="flex">
               <div className="mr-4 w-6">
                 <i className="fa-solid fa-bullhorn"></i>
@@ -126,23 +110,37 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
               </div>
             </div>
           </Link>
-
-          <Link to="/" className="drawer-nav-item" onClick={toggleDrawer}>
+          <Link
+            to="/messages"
+            className="drawer-nav-item"
+            onClick={toggleDrawer}>
             <div className="flex">
               <div className="mr-4 w-6">
-                <i className="fa-solid fa-tower-broadcast"></i>
+                <i className="fa-solid fa-envelope"></i>
               </div>
               <div>
-                <p className="mb-0 font-semibold">National Live Feed</p>
+                <p className="mb-0 font-semibold">Messages</p>
+              </div>
+            </div>
+          </Link>
+          <Link
+            to="/profile"
+            className="drawer-nav-item"
+            onClick={toggleDrawer}>
+            <div className="flex  mt-16">
+              <div className="mr-4 w-6">
+                <i className="fa-solid fa-user"></i>
+              </div>
+              <div>
+                <p className="mb-0 font-semibold">Profile</p>
               </div>
             </div>
           </Link>
           <Link
             to="/settings"
             className="drawer-nav-item"
-            onClick={toggleDrawer}
-          >
-            <div className="flex mt-16">
+            onClick={toggleDrawer}>
+            <div className="flex">
               <div className="mr-4 w-6">
                 <i className="fa-solid fa-gear"></i>
               </div>

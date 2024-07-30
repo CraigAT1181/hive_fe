@@ -6,19 +6,11 @@ export default function HeaderNav({ pageTitle }) {
   return (
     <nav className="navbar">
       <Link
-        to="/profile"
+        to="/"
         className={`nav-item ${
-          pageTitle === "PROFILE" ? "selected-nav-item" : ""
+          pageTitle === "NATIONAL DISCUSSION" ? "selected-nav-item" : ""
         }`}>
-        Profile
-      </Link>
-
-      <Link
-        to="/town-hall"
-        className={`nav-item ${
-          pageTitle === "TOWN HALL" ? "selected-nav-item" : ""
-        }`}>
-        Town Hall
+        National Discussion
       </Link>
       <Link
         to="/speakers-corner"
@@ -34,6 +26,21 @@ export default function HeaderNav({ pageTitle }) {
         }`}>
         Community
       </Link>
+
+      <Link
+        to="/town-hall"
+        className={`nav-item ${
+          pageTitle === "TOWN HALL" ? "selected-nav-item" : ""
+        }`}>
+        Town Hall
+      </Link>
+      <Link
+        to="/protests"
+        className={`nav-item ${
+          pageTitle === "PROTESTS" ? "selected-nav-item" : ""
+        }`}>
+        Protests
+      </Link>
       <Link
         to="/messages"
         className={`nav-item ${
@@ -41,13 +48,20 @@ export default function HeaderNav({ pageTitle }) {
         }`}>
         Messages
       </Link>
-
+      <div className="mx-4">|</div>
       <Link
-        to="/protests"
+        to="/profile"
         className={`nav-item ${
-          pageTitle === "PROTESTS" ? "selected-nav-item" : ""
+          pageTitle === "PROFILE" ? "selected-nav-item" : ""
         }`}>
-        Protests
+        Profile
+      </Link>
+      <Link
+        to="/settings"
+        className={`nav-item ${
+          pageTitle === "SETTINGS" ? "selected-nav-item" : ""
+        }`}>
+        Settings
       </Link>
     </nav>
   );

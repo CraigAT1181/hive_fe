@@ -7,7 +7,7 @@
 /* -- STRUCTURE -- */
 
 .header {
-  @apply p-4 text-gray-700 flex justify-center items-center;
+  @apply p-4 text-gray-700 flex justify-between items-center;
 }
 
 .main {
@@ -59,7 +59,7 @@
 }
 
 .nav-item {
-  @apply mx-4 no-underline text-white font-thin;
+  @apply mx-4 no-underline text-black font-thin;
 }
 
 .selected-nav-item {

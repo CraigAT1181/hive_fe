@@ -54,7 +54,7 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
                 <i className="fa-solid fa-tower-broadcast"></i>
               </div>
               <div>
-                <p className="mb-0 font-semibold">National Discussion</p>
+                <p className="mb-0 font-semibold">Nation Live</p>
               </div>
             </div>
           </Link>

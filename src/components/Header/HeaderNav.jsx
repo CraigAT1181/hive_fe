@@ -8,9 +8,9 @@ export default function HeaderNav({ pageTitle }) {
       <Link
         to="/"
         className={`nav-item ${
-          pageTitle === "NATIONAL DISCUSSION" ? "selected-nav-item" : ""
+          pageTitle === "Nation Live" ? "selected-nav-item" : ""
         }`}>
-        National Discussion
+        Nation Live
       </Link>
       <Link
         to="/speakers-corner"

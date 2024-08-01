@@ -11,8 +11,7 @@ export default function Header() {
   const location = useLocation();
 
   useEffect(() => {
-    const path =
-      location.pathname.substring(1).toUpperCase() || "NATIONAL DISCUSSION";
+    const path = location.pathname.substring(1).toUpperCase() || "Nation Live";
 
     const title = path.split("-").join(" ");
 

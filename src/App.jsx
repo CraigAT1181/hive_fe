@@ -7,7 +7,7 @@ import ErrorHandler from "./components/ErrorHandler/ErrorHandler";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./index.css";
 
-const NationLive = lazy(() => import("./components/Home"));
+const NationLive = lazy(() => import("./components/NationLive/NationLive"));
 const Community = lazy(() => import("./components/Community/Community"));
 const SpeakersCorner = lazy(() =>
   import("./components/SpeakersCorner/SpeakersCorner")
@@ -29,44 +29,18 @@ export default function App() {
             <div className="flex justify-center">
               <i className="fa-solid fa-spinner fa-spin"></i>
             </div>
-          }>
+          }
+        >
           <Routes>
-            <Route
-              path="/"
-              element={<NationLive />}
-            />
-            <Route
-              path="/profile"
-              element={<Profile />}
-            />
-            <Route
-              path="/town-hall"
-              element={<TownHall />}
-            />
-            <Route
-              path="/speakers-corner"
-              element={<SpeakersCorner />}
-            />
-            <Route
-              path="/community"
-              element={<Community />}
-            />
-            <Route
-              path="/messages"
-              element={<Messages />}
-            />
-            <Route
-              path="/protests"
-              element={<Protests />}
-            />
-            <Route
-              path="/settings"
-              element={<Settings />}
-            />
-            <Route
-              path="/*"
-              element={<ErrorHandler />}
-            />
+            <Route path="/" element={<NationLive />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/town-hall" element={<TownHall />} />
+            <Route path="/speakers-corner" element={<SpeakersCorner />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/messages" element={<Messages />} />
+            <Route path="/protests" element={<Protests />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/*" element={<ErrorHandler />} />
           </Routes>
         </Suspense>
       </main>

@@ -68,6 +68,25 @@
 
 /* -- PAGES -- */
 
-.home-container {
-  @apply flex justify-center;
+/* -- NATION LIVE -- */
+
+.nation-live-container {
+  @apply p-4;
+}
+
+/* -- POST DISPLAY -- */
+
+.post-display-container {
+}
+
+/* -- POST CARD -- */
+
+.post-card-container {
+  @apply flex my-4 p-2 rounded shadow-sm;
+}
+
+.post-card-profile-pic {
+}
+
+.post-card-message {
 }

@@ -71,7 +71,7 @@
 /* -- NATION LIVE -- */
 
 .nation-live-container {
-  @apply p-4;
+  @apply p-4 lg:mx-64;
 }
 
 /* -- POST DISPLAY -- */
@@ -82,7 +82,7 @@
 /* -- POST CARD -- */
 
 .post-card-container {
-  @apply flex my-4 p-2 rounded shadow-sm;
+  @apply flex rounded mb-4 shadow-sm;
 }
 
 .post-card-profile-pic {

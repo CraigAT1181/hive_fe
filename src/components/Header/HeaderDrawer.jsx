@@ -124,6 +124,19 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
             </div>
           </Link>
           <Link
+            to="/messages"
+            className="drawer-nav-item"
+            onClick={toggleDrawer}>
+            <div className="flex">
+              <div className="mr-4 w-6">
+                <i className="fa-solid fa-bell"></i>
+              </div>
+              <div>
+                <p className="mb-0 font-semibold">Notifications</p>
+              </div>
+            </div>
+          </Link>
+          <Link
             to="/profile"
             className="drawer-nav-item"
             onClick={toggleDrawer}>

@@ -15,6 +15,7 @@ const SpeakersCorner = lazy(() =>
 const TownHall = lazy(() => import("./components/TownHall/TownHall"));
 const Protests = lazy(() => import("./components/Protests/Protests"));
 const Messages = lazy(() => import("./components/Messages/Messages"));
+const Notifications = lazy(() => import("./components/Notifications/Notifications"));
 const Profile = lazy(() => import("./components/Profile/Profile"));
 const Settings = lazy(() => import("./components/Settings/Settings"));
 
@@ -38,6 +39,7 @@ export default function App() {
             <Route path="/speakers-corner" element={<SpeakersCorner />} />
             <Route path="/community" element={<Community />} />
             <Route path="/messages" element={<Messages />} />
+            <Route path="/notifications" element={<Notifications />} />
             <Route path="/protests" element={<Protests />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/*" element={<ErrorHandler />} />

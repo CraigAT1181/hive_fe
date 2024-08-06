@@ -48,6 +48,13 @@ export default function HeaderNav({ pageTitle }) {
         }`}>
         Messages
       </Link>
+      <Link
+        to="/notifications"
+        className={`nav-item ${
+          pageTitle === "NOTIFICATIONS" ? "selected-nav-item" : ""
+        }`}>
+        Notifications
+      </Link>
       <div className="mx-4">|</div>
       <Link
         to="/profile"

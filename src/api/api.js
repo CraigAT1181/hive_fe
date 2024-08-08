@@ -11,3 +11,44 @@ export const getUsers = async () => {
   
     return data;
   };
+
+  export const registerUser = async (email, password, full_name, handle, telephone, profile_pic, birthday, bio, country, city, county) => {
+    const { data } = await api.post("/users", {
+      email,
+      password,
+      full_name,
+      handle,
+      telephone,
+      profile_pic,
+      birthday,
+      bio,
+      country,
+      city,
+      county
+    });
+  
+    return data;
+  };
+
+  export const loginUser = async (email, password) => {
+    const { data } = await api.post("/users/login", {
+      email,
+      password,
+    });
+  
+    return data;
+  };
+
+export const authenticateUser = async () => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    
+      const response = await api.get("/users/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+  });
+  
+}
+}

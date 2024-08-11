@@ -5,12 +5,13 @@ const SessionContext = createContext();
 
 export function SessionProvider({ children }) {
   const [user, setUser] = useState(null);
+
   const navigate = useNavigate();
   // Login
-  const login = (user, session) => {
+  const login = (user, token) => {
     try {
       setUser(user);
-      localStorage.setItem("token", session.access_token);
+      localStorage.setItem("token", token);
     } catch (error) {
       console.error("error", error);
       handleLogout();

@@ -24,6 +24,8 @@
   @apply flex justify-center;
 }
 
+/* -- FEATURES -- */
+
 /* -- NAVBAR -- */
 
 .drawer-secondary {
@@ -64,6 +66,24 @@
 
 .selected-nav-item {
   @apply font-semibold;
+}
+
+/* -- BUTTONS -- */
+
+.login-button {
+  @apply text-gray-700 border border-gray-300 font-semibold rounded-md p-2 mx-1 shadow-lg
+}
+
+.register-button {
+  @apply text-gray-700 border border-gray-300 font-semibold rounded-md p-2 mx-1 shadow-lg
+}
+
+.confirm-button {
+@apply bg-gray-700 text-white font-semibold rounded-md p-2 mx-1
+}
+
+.reset-password {
+  @apply w-fit p-1 text-sm text-red-800 underline
 }
 
 /* -- PAGES -- */

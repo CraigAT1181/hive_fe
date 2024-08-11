@@ -28,9 +28,10 @@ export default function Login() {
     e.preventDefault();
     setIsLoading(true);
     loginUser(email, password)
-      .then((data) => {
-        const { user, session } = data;
-        login(user, session);
+      .then(({ user, authData }) => {
+        setIsLoading(false);
+        const token = authData.session.access_token;
+        login(user, token);
 
         navigate("/");
       })
@@ -42,34 +43,33 @@ export default function Login() {
 
   if (isLoading)
     return (
-      <div className="flex flex-col justify-center">
+      <div className="">
         <p>Logging you in!</p>
         <i className="fa-solid fa-spinner fa-spin"></i>
       </div>
     );
 
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal
+      show={show}
+      onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Login</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {error && (
-          <Alert variant="danger">
-            <div>{error}</div>
-            <div
-              style={{
-                fontSize: "13px",
-                textDecoration: "underline",
-                cursor: "pointer",
-              }}
-              onClick={() => {
-                navigate("/request-link");
-              }}
-            >
-              Reset password.
+          <div className="flex flex-col text-center">
+            <p className="text-red-800 m-0">{error}</p>
+            <div>
+              <button
+                className="reset-password"
+                onClick={() => {
+                  navigate("/request-link");
+                }}>
+                Reset password
+              </button>
             </div>
-          </Alert>
+          </div>
         )}
         <form onSubmit={loginHandler}>
           <div className="form-group my-2">
@@ -90,25 +90,21 @@ export default function Login() {
               className="form-control"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              style={{ paddingRight: "40px" }}
             />
             <button
-              className="text-green-900 cursor-pointer bg-transparent absolute top-8 right-2"
+              className="text-gray-800 cursor-pointer bg-transparent absolute top-8 right-2"
               onClick={togglePasswordVisibility}
-              type="button"
-            >
+              type="button">
               <i
                 className={`fa-solid ${
                   showPassword ? "fa-eye" : "fa-eye-slash"
-                }`}
-              ></i>
+                }`}></i>
             </button>
           </div>
           <div className="d-flex justify-content-center mt-4">
             <button
-              className="bg-green-950 text-white p-2 rounded-md"
-              type="submit"
-            >
+              className="confirm-button"
+              type="submit">
               Confirm
             </button>
           </div>

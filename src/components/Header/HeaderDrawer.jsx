@@ -62,13 +62,13 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
               </div>
               <div className="flex justify-center">
                 <button
-                  className="border border-gray-800 p-1 rounded mx-1"
+                  className="login-button"
                   onClick={handleLogin}
                 >
                   Login
                 </button>
                 <button
-                  className="border border-gray-800 p-1 rounded mx-1"
+                  className="register-button"
                   onClick={handleRegister}
                 >
                   Register

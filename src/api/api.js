@@ -1,3 +1,4 @@
+import { handleInvalidToken } from "../components/Utils/handleInvalidToken.jsx";
 import axios from "axios";
 
 const api = axios.create({
@@ -47,7 +48,7 @@ export const loginUser = async (email, password) => {
     email,
     password,
   });
-console.log(data);
+  console.log(data);
   return data;
 };
 
@@ -55,13 +56,22 @@ export const authenticateUser = async () => {
   const token = localStorage.getItem("token");
 
   if (token) {
-    const { data } = await api.get("/users/authenticate", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    try {
+      const response = await api.get("/users/authenticate", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    return data.user;
+      return response.data.user;
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        handleInvalidToken();
+      } else {
+        console.error("An error occurred during authentication:", error);
+      }
+      return null;
+    }
   }
 
   return null;
@@ -71,7 +81,7 @@ export const logout = async () => {
   const token = localStorage.getItem("token");
 
   if (token) {
-    await api.post("/users/logout", {})
+    await api.post("/users/logout", {});
 
     localStorage.removeItem("token");
   }

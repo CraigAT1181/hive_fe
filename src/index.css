@@ -33,7 +33,7 @@
 }
 
 .drawer-primary {
-  @apply bg-white w-64 h-full shadow-lg p-4;
+  @apply flex flex-col bg-white w-64 h-full shadow-lg p-4;
 }
 
 .drawer-close {
@@ -74,12 +74,12 @@
   @apply text-gray-700 border border-gray-300 font-semibold rounded-md p-2 mx-1 shadow-lg;
 }
 
-.logout-button {
-  @apply text-gray-700 border border-gray-300 font-semibold rounded-md p-2 mx-1 shadow-lg;
+.logout-button-drawer {
+  @apply text-red-700 underline font-semibold rounded-md;
 }
 
 .register-button {
-  @apply text-gray-700 border border-gray-300 font-semibold rounded-md p-2 mx-1 shadow-lg;
+  @apply bg-gray-700 border text-white border-gray-300 font-semibold rounded-md p-2 mx-1 shadow-lg;
 }
 
 .confirm-button {

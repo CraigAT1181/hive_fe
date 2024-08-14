@@ -21,7 +21,7 @@ export function SessionProvider({ children }) {
     };
 
     fetchUser();
-
+    
     console.log(user);
   }, []);
 

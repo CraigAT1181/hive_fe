@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HeaderDrawer from "./HeaderDrawer";
 import HeaderNav from "./HeaderNav";
-// import SessionManager from "./SessionManager";
 import { useLocation } from "react-router-dom";
 
 export default function Header() {
@@ -56,9 +55,6 @@ export default function Header() {
           <p className="font-semibold m-0 mt-1">Hive</p>
         </div>
       </div>
-      {/* <div className="hidden lg:block">
-        <SessionManager />
-      </div> */}
       <HeaderDrawer
         isDrawerOpen={isDrawerOpen}
         toggleDrawer={toggleDrawer}

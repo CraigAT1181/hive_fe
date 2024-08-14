@@ -78,6 +78,10 @@
   @apply text-red-700 underline font-semibold rounded-md;
 }
 
+.logout-button-nav {
+  @apply text-red-700 font-semibold rounded-md;
+}
+
 .register-button {
   @apply bg-gray-700 border text-white border-gray-300 font-semibold rounded-md p-2 mx-1 shadow-lg;
 }

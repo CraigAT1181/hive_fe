@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
-  const { user, login, logout } = useSession();
+  const { user, handleLogout } = useSession();
   const navigate = useNavigate();
 
   const handleRegister = () => {
@@ -13,10 +13,6 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
 
   const handleLogin = () => {
     navigate("/login");
-  };
-
-  const handleLogout = () => {
-    logout();
   };
 
   return (
@@ -61,16 +57,10 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
                 <p>Join the Hive!</p>
               </div>
               <div className="flex justify-center">
-                <button
-                  className="login-button"
-                  onClick={handleLogin}
-                >
+                <button className="login-button" onClick={handleLogin}>
                   Login
                 </button>
-                <button
-                  className="register-button"
-                  onClick={handleRegister}
-                >
+                <button className="register-button" onClick={handleRegister}>
                   Register
                 </button>
               </div>
@@ -214,6 +204,13 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
           )}
         </nav>
       </div>
+      {user && (
+        <div className="flex justify-center">
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
+      )}
     </div>
   );
 }

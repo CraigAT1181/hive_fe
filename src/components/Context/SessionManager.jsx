@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { authenticateUser, logout } from "../../api/api";
 
 const SessionContext = createContext();
 
@@ -7,31 +8,40 @@ export function SessionProvider({ children }) {
   const [user, setUser] = useState(null);
 
   const navigate = useNavigate();
-  // Login
-  const login = (user, token) => {
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const userData = await authenticateUser();
+        setUser(userData);
+      } catch (error) {
+        setUser(null);
+        console.error("Failed to fetch user information", error);
+      }
+    };
+
+    fetchUser();
+
+    console.log(user);
+  }, []);
+
+  const login = (session, user) => {
     try {
+      localStorage.setItem("token", session.access_token);
       setUser(user);
-      localStorage.setItem("token", token);
     } catch (error) {
       console.error("error", error);
       handleLogout();
     }
   };
 
-  // Logout function
-  const logout = () => {
-    handleLogout();
-  };
-
-  // Function to handle user logout
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await logout();
     setUser(null);
-    localStorage.removeItem("token");
-    navigate("/");
   };
 
   return (
-    <SessionContext.Provider value={{ user, login, logout }}>
+    <SessionContext.Provider value={{ user, login, handleLogout }}>
       {children}
     </SessionContext.Provider>
   );

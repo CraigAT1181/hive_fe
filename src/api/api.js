@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "http://localhost:9090",
 });
 
 export default api;
@@ -47,7 +47,7 @@ export const loginUser = async (email, password) => {
     email,
     password,
   });
-
+console.log(data);
   return data;
 };
 
@@ -55,10 +55,24 @@ export const authenticateUser = async () => {
   const token = localStorage.getItem("token");
 
   if (token) {
-    const response = await api.get("/users/authenticate", {
+    const { data } = await api.get("/users/authenticate", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
+
+    return data.user;
+  }
+
+  return null;
+};
+
+export const logout = async () => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    await api.post("/users/logout", {})
+
+    localStorage.removeItem("token");
   }
 };

@@ -13,35 +13,16 @@ export const getUsers = async () => {
   return data;
 };
 
-export const registerUser = async (
-  email,
-  password,
-  full_name,
-  handle,
-  telephone,
-  profile_pic,
-  birthday,
-  bio,
-  country,
-  city,
-  county
-) => {
-  const { data } = await api.post("/users", {
-    email,
-    password,
-    full_name,
-    handle,
-    telephone,
-    profile_pic,
-    birthday,
-    bio,
-    country,
-    city,
-    county,
-  });
-
-  return data;
+export const registerUser = async (userDetails) => {
+  try {
+    const { data } = await api.post("/users", userDetails);
+    return data;
+  } catch (error) {
+    console.error('Error registering user:', error);
+    throw error;
+  }
 };
+
 
 export const loginUser = async (email, password) => {
   const { data } = await api.post("/users/login", {
@@ -84,5 +65,15 @@ export const logout = async () => {
     await api.post("/users/logout", {});
 
     localStorage.removeItem("token");
+  }
+};
+
+export const deleteUser = async (userId) => {
+  try {
+    const { data } = await api.delete(`/users/${userId}`);
+    return data.message;
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    throw error;
   }
 };

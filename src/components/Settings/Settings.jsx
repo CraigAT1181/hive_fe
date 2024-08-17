@@ -3,7 +3,7 @@ import React from "react";
 export default function Settings() {
   return (
     <div>
-      <p>Settings working!</p>
+      <p>Add option to delete account!</p>
     </div>
   );
 }

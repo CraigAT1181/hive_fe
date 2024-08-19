@@ -20,35 +20,30 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
       className={`drawer-secondary transform ${
         isDrawerOpen ? "translate-x-0" : "-translate-x-full"
       } transition-transform`}
-      onClick={toggleDrawer}>
-      <div
-        className="drawer-primary"
-        onClick={(e) => e.stopPropagation()}>
-        <button
-          onClick={toggleDrawer}
-          className="drawer-close">
+      onClick={toggleDrawer}
+    >
+      <div className="drawer-primary" onClick={(e) => e.stopPropagation()}>
+        <button onClick={toggleDrawer} className="drawer-close">
           <svg
             className="w-6 h-6"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg">
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              d="M6 18L18 6M6 6l12 12"></path>
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
           </svg>
         </button>
         <div className="drawer-user-section">
           {user ? (
             <>
               <div>
-                <img
-                  src={"/profile-pic.jpg"}
-                  className="profile-icon"
-                  alt=""
-                />
+                <img src={"/profile-pic.jpg"} className="profile-icon" alt="" />
               </div>
               <div>
                 <p className="mb-0">{user.full_name}</p>
@@ -62,14 +57,13 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
                 <p>Join the Hive!</p>
               </div>
               <div className="flex justify-center">
-                <button
-                  className="login-button"
-                  onClick={handleLogin}>
+                <button className="login-button" onClick={handleLogin}>
                   Login
                 </button>
                 <button
                   className="register-button"
-                  onClick={handleRegister}>
+                  onClick={() => navigate("/register")}
+                >
                   Register
                 </button>
               </div>
@@ -79,10 +73,7 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
         <hr />
 
         <nav className="drawer-nav">
-          <Link
-            to="/"
-            className="drawer-nav-item"
-            onClick={toggleDrawer}>
+          <Link to="/" className="drawer-nav-item" onClick={toggleDrawer}>
             <div className="flex">
               <div className="mr-4 w-6">
                 <i className="fa-solid fa-tower-broadcast"></i>
@@ -95,7 +86,8 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
           <Link
             to="/speakers-corner"
             className="drawer-nav-item"
-            onClick={toggleDrawer}>
+            onClick={toggleDrawer}
+          >
             <div className="flex">
               <div className="mr-4 w-6">
                 <i className="fa-solid fa-microphone"></i>
@@ -110,7 +102,8 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
               <Link
                 to="/community"
                 className="drawer-nav-item"
-                onClick={toggleDrawer}>
+                onClick={toggleDrawer}
+              >
                 <div className="flex">
                   <div className="mr-4 w-6">
                     <i className="fa-solid fa-users-line"></i>
@@ -123,7 +116,8 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
               <Link
                 to="/town-hall"
                 className="drawer-nav-item"
-                onClick={toggleDrawer}>
+                onClick={toggleDrawer}
+              >
                 <div className="flex">
                   <div className="mr-4 w-6">
                     <i className="fa-solid fa-house-flag"></i>
@@ -139,7 +133,8 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
           <Link
             to="/protests"
             className="drawer-nav-item"
-            onClick={toggleDrawer}>
+            onClick={toggleDrawer}
+          >
             <div className="flex">
               <div className="mr-4 w-6">
                 <i className="fa-solid fa-bullhorn"></i>
@@ -154,7 +149,8 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
               <Link
                 to="/messages"
                 className="drawer-nav-item"
-                onClick={toggleDrawer}>
+                onClick={toggleDrawer}
+              >
                 <div className="flex">
                   <div className="mr-4 w-6">
                     <i className="fa-solid fa-envelope"></i>
@@ -167,7 +163,8 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
               <Link
                 to="/messages"
                 className="drawer-nav-item"
-                onClick={toggleDrawer}>
+                onClick={toggleDrawer}
+              >
                 <div className="flex">
                   <div className="mr-4 w-6">
                     <i className="fa-solid fa-bell"></i>
@@ -181,7 +178,8 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
               <Link
                 to="/profile"
                 className="drawer-nav-item"
-                onClick={toggleDrawer}>
+                onClick={toggleDrawer}
+              >
                 <div className="flex  mt-16">
                   <div className="mr-4 w-6">
                     <i className="fa-solid fa-user"></i>
@@ -194,7 +192,8 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
               <Link
                 to="/settings"
                 className="drawer-nav-item"
-                onClick={toggleDrawer}>
+                onClick={toggleDrawer}
+              >
                 <div className="flex">
                   <div className="mr-4 w-6">
                     <i className="fa-solid fa-gear"></i>
@@ -209,9 +208,7 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
         </nav>
         {user && (
           <div className="flex justify-center">
-            <button
-              className="logout-button-drawer"
-              onClick={handleLogout}>
+            <button className="logout-button-drawer" onClick={handleLogout}>
               Logout
             </button>
           </div>

@@ -21,6 +21,7 @@ const Notifications = lazy(() =>
 const Profile = lazy(() => import("./components/Profile/Profile"));
 const Settings = lazy(() => import("./components/Settings/Settings"));
 const Login = lazy(() => import("./components/SessionManager/Login"));
+const Register = lazy(() => import("./components/SessionManager/Register"));
 
 export default function App() {
   return (
@@ -46,6 +47,7 @@ export default function App() {
               <Route path="/protests" element={<Protests />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
               <Route path="/*" element={<ErrorHandler />} />
             </Routes>
           </Suspense>

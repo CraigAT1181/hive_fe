@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { register } from "../api/api";
+import { registerUser } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import { Modal, Alert } from "react-bootstrap";
-import PasswordChecker from "./PasswordChecker";
+import PasswordChecker from "../Utils/PasswordChecker";
 
 export default function Register() {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,11 +11,18 @@ export default function Register() {
   const [retypePassword, setRetypePassword] = useState("");
   const [showPassword1, setShowPassword1] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
+  const [profilePic, setProfilePic] = useState(null);
   const [formData, setFormData] = useState({
-    username: "",
-    password: "",
     email: "",
-    postcode: "",
+    password: "",
+    fullName: "",
+    handle: "",
+    telephone: "",
+    birthday: "",
+    bio: "",
+    country: "",
+    city: "",
+    county: "",
   });
 
   const navigate = useNavigate();
@@ -36,23 +43,44 @@ export default function Register() {
     }));
   };
 
+  const handleFileInput = (e) => {
+    setProfilePic(e.target.files[0]);
+  };
+
   const registrationHandler = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const { username, password, email, postcode } = formData;
+
+    const data = new FormData();
+    data.append("email", formData.email);
+    data.append("password", formData.password);
+    data.append("full_name", formData.fullName);
+    data.append("handle", formData.handle);
+    data.append("telephone", formData.telephone);
+    data.append("birthday", formData.birthday);
+    data.append("bio", formData.bio);
+    data.append("country", formData.country);
+    data.append("city", formData.city);
+    data.append("county", formData.county);
+
+    if (profilePic) {
+      data.append("profile_pic", profilePic);
+    }
+
     if (formData.password !== retypePassword) {
       setIsLoading(false);
       setError("Passwords don't match, please try again.");
     } else {
-      register(username, email, password, postcode)
-        .then(({ message }) => {
-          if (message === "New user registered.") {
-            setIsLoading(false);
-            navigate("/login");
-          } else {
-            setIsLoading(false);
-            setError(message);
-          }
+      registerUser(data)
+        .then((response) => {
+          console.log(response, "Registration");
+          // if (user) {
+          //   setIsLoading(false);
+          //   navigate("/login");
+          // } else {
+          //   setIsLoading(false);
+          //   setError(message);
+          // }
         })
         .catch((error) => {
           setIsLoading(false);
@@ -75,9 +103,7 @@ export default function Register() {
     );
 
   return (
-    <Modal
-      show={show}
-      onHide={handleClose}>
+    <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Register</Modal.Title>
       </Modal.Header>
@@ -85,14 +111,122 @@ export default function Register() {
         {error && <Alert variant="danger">{error}</Alert>}
         <form onSubmit={registrationHandler}>
           <div className="form-group mt-2">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="fullName">Full Name</label>
             <input
-              id="username"
+              id="fullName"
               type="text"
               className="form-control"
-              name="username"
-              value={formData.username}
+              name="fullName"
+              value={formData.fullName}
               onChange={handleInput}
+              required
+            />
+          </div>
+          <div className="form-group mt-2">
+            <label htmlFor="handle">Handle</label>
+            <div className="flex relative items-center">
+              <span className="absolute left-2 text-gray-400">@</span>
+              <input
+                id="handle"
+                type="text"
+                className="form-control ml-8"
+                name="handle"
+                value={formData.handle}
+                onChange={handleInput}
+                required
+              />
+            </div>
+          </div>
+          <div className="form-group mt-2">
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              className="form-control"
+              name="email"
+              value={formData.email}
+              onChange={handleInput}
+              required
+            />
+          </div>
+          <div className="form-group mt-2">
+            <label htmlFor="telephone">Telephone</label>
+            <input
+              id="telephone"
+              type="tel"
+              className="form-control"
+              name="telephone"
+              value={formData.telephone}
+              onChange={handleInput}
+            />
+          </div>
+          <div className="form-group mt-2">
+            <label htmlFor="birthday">Birthday</label>
+            <input
+              id="birthday"
+              type="date"
+              className="form-control"
+              name="birthday"
+              value={formData.birthday}
+              onChange={handleInput}
+            />
+          </div>
+          <div className="form-group mt-2">
+            <label htmlFor="bio">Bio</label>
+            <textarea
+              id="bio"
+              className="form-control"
+              name="bio"
+              value={formData.bio}
+              onChange={handleInput}
+            />
+          </div>
+          <div className="form-group mt-2">
+            <label htmlFor="country">Country</label>
+            <input
+              id="country"
+              type="text"
+              className="form-control"
+              name="country"
+              value={formData.country}
+              onChange={handleInput}
+              required
+            />
+          </div>
+          <div className="form-group mt-2">
+            <label htmlFor="city">City</label>
+            <input
+              id="city"
+              type="text"
+              className="form-control"
+              name="city"
+              value={formData.city}
+              onChange={handleInput}
+              required
+            />
+          </div>
+          <div className="form-group mt-2">
+            <label htmlFor="county">County</label>
+            <input
+              id="county"
+              type="text"
+              className="form-control"
+              name="county"
+              value={formData.county}
+              onChange={handleInput}
+              required
+            />
+          </div>
+          <div className="form-group mt-2">
+            <label htmlFor="profile_pic">
+              Profile Picture (Must be .jpg, .jpeg or .png)
+            </label>
+            <input
+              id="profile_pic"
+              type="file"
+              className="form-control"
+              name="profile_pic"
+              onChange={handleFileInput}
             />
           </div>
           <div className="form-group mt-2">
@@ -106,68 +240,50 @@ export default function Register() {
                 value={formData.password}
                 onChange={handleInput}
                 style={{ paddingRight: "40px" }}
+                required
               />
               <button
-                className="text-green-900 cursor-pointer bg-transparent absolute top-2 right-2"
+                className="text-gray-700 cursor-pointer bg-transparent absolute top-2 right-2"
                 onClick={togglePassword1Visibility}
-                type="button">
+                type="button"
+              >
                 <i
                   className={`fa-solid ${
-                    showPassword1 ? "fa-eye" : "fa-eye-slash"
-                  }`}></i>
+                    showPassword1 ? "fa-eye-slash" : "fa-eye"
+                  }`}
+                ></i>
               </button>
             </div>
-            <div className="form-group mt-2">
-              <div style={{ position: "relative" }}>
-                <label htmlFor="password2">Re-type Password</label>
-                <input
-                  id="password2"
-                  type={showPassword2 ? "text" : "password"}
-                  className="form-control"
-                  name="retypePassword"
-                  value={retypePassword}
-                  onChange={({ target }) => setRetypePassword(target.value)}
-                  style={{ paddingRight: "40px" }}
-                />
-                <button
-                  className="text-green-900 cursor-pointer bg-transparent absolute top-8 right-2"
-                  onClick={togglePassword2Visibility}
-                  type="button">
-                  <i
-                    className={`fa-solid ${
-                      showPassword2 ? "fa-eye" : "fa-eye-slash"
-                    }`}></i>
-                </button>
-              </div>
+          </div>
+          <div className="form-group mt-2">
+            <label htmlFor="password2">Re-type Password</label>
+            <div style={{ position: "relative" }}>
+              <input
+                id="password2"
+                type={showPassword2 ? "text" : "password"}
+                className="form-control"
+                name="retypePassword"
+                value={retypePassword}
+                onChange={({ target }) => setRetypePassword(target.value)}
+                style={{ paddingRight: "40px" }}
+                required
+              />
+              <button
+                className="text-gray-700 cursor-pointer bg-transparent absolute top-2 right-2"
+                onClick={togglePassword2Visibility}
+                type="button"
+              >
+                <i
+                  className={`fa-solid ${
+                    showPassword2 ? "fa-eye-slash" : "fa-eye"
+                  }`}
+                ></i>
+              </button>
             </div>
-            <PasswordChecker password={formData.password} />
           </div>
-          <div className="form-group mt-2">
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              type="text"
-              className="form-control"
-              name="email"
-              value={formData.email}
-              onChange={handleInput}
-            />
-          </div>
-          <div className="form-group mt-2">
-            <label htmlFor="postcode">Postcode</label>
-            <input
-              id="postcode"
-              type="text"
-              className="form-control"
-              name="postcode"
-              value={formData.postcode}
-              onChange={handleInput}
-            />
-          </div>
+          <PasswordChecker password={formData.password} />
           <div className="d-flex justify-content-center mt-4">
-            <button
-              className="bg-green-950 text-white p-2 rounded-md"
-              type="submit">
+            <button className="confirm-button" type="submit">
               Confirm
             </button>
           </div>

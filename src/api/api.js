@@ -15,11 +15,15 @@ export const getUsers = async () => {
 
 export const registerUser = async (userDetails) => {
   try {
-    const { data } = await api.post("/users", userDetails);
-    return data;
+    const response = await api.post("/users", userDetails, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    console.log('User registered successfully:', response.data);
+    return response;
   } catch (error) {
     console.error('Error registering user:', error);
-    throw error;
   }
 };
 

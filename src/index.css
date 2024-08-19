@@ -44,8 +44,8 @@
   @apply text-gray-700 mt-4;
 }
 
-.profile-icon {
-  @apply bg-gray-700 w-12 h-12 rounded;
+.drawer-profile-icon {
+  @apply border-2 border-gray-700 w-20 h-20 mb-2 rounded-lg;
 }
 
 .drawer-nav {

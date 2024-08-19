@@ -43,7 +43,7 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
           {user ? (
             <>
               <div>
-                <img src={"/profile-pic.jpg"} className="profile-icon" alt="" />
+                <img src={user.profile_pic} className="drawer-profile-icon" alt="User's profile picture" />
               </div>
               <div>
                 <p className="mb-0">{user.full_name}</p>

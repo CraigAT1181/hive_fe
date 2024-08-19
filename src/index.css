@@ -15,7 +15,7 @@
 }
 
 .footer {
-  @apply bg-gray-700 p-4 flex justify-center items-center;
+  @apply bg-gray-700 fixed bottom-0 w-full text-center items-center p-4;
 }
 
 /* -- ERRORS -- */
@@ -92,6 +92,16 @@
 
 .reset-password {
   @apply w-fit p-1 text-sm text-red-800 underline;
+}
+
+/* -- MESSAGE INPUT -- */
+
+.message-input {
+  @apply w-full pr-10 pl-4 py-2 border-2 border-green-900 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent lg:w-96;
+}
+
+.message-send-button {
+  @apply absolute inset-y-0 right-0 pr-3 flex items-center;
 }
 
 /* -- PAGES -- */

@@ -51,36 +51,35 @@ export default function Register() {
     e.preventDefault();
     setIsLoading(true);
 
-    const data = new FormData();
-    data.append("email", formData.email);
-    data.append("password", formData.password);
-    data.append("full_name", formData.fullName);
-    data.append("handle", formData.handle);
-    data.append("telephone", formData.telephone);
-    data.append("birthday", formData.birthday);
-    data.append("bio", formData.bio);
-    data.append("country", formData.country);
-    data.append("city", formData.city);
-    data.append("county", formData.county);
+    const userData = new FormData();
+    userData.append("email", formData.email);
+    userData.append("password", formData.password);
+    userData.append("full_name", formData.fullName);
+    userData.append("handle", formData.handle);
+    userData.append("telephone", formData.telephone);
+    userData.append("birthday", formData.birthday);
+    userData.append("bio", formData.bio);
+    userData.append("country", formData.country);
+    userData.append("city", formData.city);
+    userData.append("county", formData.county);
 
     if (profilePic) {
-      data.append("profile_pic", profilePic);
+      userData.append("profile-pic", profilePic);
     }
 
     if (formData.password !== retypePassword) {
       setIsLoading(false);
       setError("Passwords don't match, please try again.");
     } else {
-      registerUser(data)
-        .then((response) => {
-          console.log(response, "Registration");
-          // if (user) {
-          //   setIsLoading(false);
-          //   navigate("/login");
-          // } else {
-          //   setIsLoading(false);
-          //   setError(message);
-          // }
+      registerUser(userData)
+        .then(({ user }) => {
+          if (user) {
+            setIsLoading(false);
+            navigate("/login");
+          } else {
+            setIsLoading(false);
+            setError(message);
+          }
         })
         .catch((error) => {
           setIsLoading(false);
@@ -103,7 +102,9 @@ export default function Register() {
     );
 
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal
+      show={show}
+      onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Register</Modal.Title>
       </Modal.Header>
@@ -245,13 +246,11 @@ export default function Register() {
               <button
                 className="text-gray-700 cursor-pointer bg-transparent absolute top-2 right-2"
                 onClick={togglePassword1Visibility}
-                type="button"
-              >
+                type="button">
                 <i
                   className={`fa-solid ${
                     showPassword1 ? "fa-eye-slash" : "fa-eye"
-                  }`}
-                ></i>
+                  }`}></i>
               </button>
             </div>
           </div>
@@ -271,19 +270,19 @@ export default function Register() {
               <button
                 className="text-gray-700 cursor-pointer bg-transparent absolute top-2 right-2"
                 onClick={togglePassword2Visibility}
-                type="button"
-              >
+                type="button">
                 <i
                   className={`fa-solid ${
                     showPassword2 ? "fa-eye-slash" : "fa-eye"
-                  }`}
-                ></i>
+                  }`}></i>
               </button>
             </div>
           </div>
           <PasswordChecker password={formData.password} />
           <div className="d-flex justify-content-center mt-4">
-            <button className="confirm-button" type="submit">
+            <button
+              className="confirm-button"
+              type="submit">
               Confirm
             </button>
           </div>

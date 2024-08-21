@@ -34,21 +34,56 @@ export default function App() {
               <div className="flex justify-center">
                 <i className="fa-solid fa-spinner fa-spin"></i>
               </div>
-            }
-          >
+            }>
             <Routes>
-              <Route path="/" element={<NationLive />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/town-hall" element={<TownHall />} />
-              <Route path="/speakers-corner" element={<SpeakersCorner />} />
-              <Route path="/community" element={<Community />} />
-              <Route path="/messages" element={<Messages />} />
-              <Route path="/notifications" element={<Notifications />} />
-              <Route path="/protests" element={<Protests />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/*" element={<ErrorHandler />} />
+              <Route
+                path="/"
+                element={<NationLive />}
+              />
+              <Route
+                path="/profile"
+                element={<Profile />}
+              />
+              <Route
+                path="/town-hall"
+                element={<TownHall />}
+              />
+              <Route
+                path="/speakers-corner"
+                element={<SpeakersCorner />}
+              />
+              <Route
+                path="/community"
+                element={<Community />}
+              />
+              <Route
+                path="/messages"
+                element={<Messages />}
+              />
+              <Route
+                path="/notifications"
+                element={<Notifications />}
+              />
+              <Route
+                path="/protests"
+                element={<Protests />}
+              />
+              <Route
+                path="/settings"
+                element={<Settings />}
+              />
+              <Route
+                path="/login"
+                element={<Login />}
+              />
+              <Route
+                path="/register"
+                element={<Register />}
+              />
+              <Route
+                path="/*"
+                element={<ErrorHandler />}
+              />
             </Routes>
           </Suspense>
         </main>

@@ -43,18 +43,13 @@ export default function Header() {
         </button>
       </div>
       <div className="flex flex-grow justify-center lg:hidden">
-        <span className="text-2xl font-thin">{pageTitle}</span>
+        <span className="text-3xl font-thin">{pageTitle}</span>
       </div>
 
       <div className="hidden lg:block">
         <HeaderNav pageTitle={pageTitle} />
       </div>
-      <div className="flex items-center justify-center relative">
-        <div>
-          <i className="fa-solid fa-2xl fa-circle-nodes"></i>
-          <p className="font-semibold m-0 mt-1">Hive</p>
-        </div>
-      </div>
+
       <HeaderDrawer
         isDrawerOpen={isDrawerOpen}
         toggleDrawer={toggleDrawer}

@@ -97,7 +97,7 @@
 /* -- MESSAGE INPUT -- */
 
 .message-input {
-  @apply w-full pr-10 pl-4 py-2 border-2 border-green-900 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent lg:w-96;
+  @apply w-full text-center pr-10 pl-4 py-2 border-2 border-green-900 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent lg:w-96;
 }
 
 .message-send-button {

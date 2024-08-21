@@ -54,7 +54,7 @@ export default function Register() {
     const userData = new FormData();
     userData.append("email", formData.email);
     userData.append("password", formData.password);
-    userData.append("full_name", formData.fullName);
+    userData.append("full_name", formData.full_name);
     userData.append("handle", formData.handle);
     userData.append("telephone", formData.telephone);
     userData.append("birthday", formData.birthday);
@@ -75,7 +75,7 @@ export default function Register() {
         .then(({ user }) => {
           if (user) {
             setIsLoading(false);
-            navigate("/login");
+            navigate("/email-confirmation");
           } else {
             setIsLoading(false);
             setError(message);
@@ -110,13 +110,13 @@ export default function Register() {
         {error && <Alert variant="danger">{error}</Alert>}
         <form onSubmit={registrationHandler}>
           <div className="form-group mt-2">
-            <label htmlFor="fullName">Full Name</label>
+            <label htmlFor="full_name">Full Name</label>
             <input
-              id="fullName"
+              id="full_name"
               type="text"
               className="form-control"
-              name="fullName"
-              value={formData.fullName}
+              name="full_name"
+              value={formData.full_name}
               onChange={handleInput}
               required
             />

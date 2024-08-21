@@ -33,7 +33,7 @@
 }
 
 .drawer-primary {
-  @apply flex flex-col bg-white w-64 h-full shadow-lg p-4;
+  @apply flex flex-col overflow-auto bg-white w-64 h-full shadow-lg p-4;
 }
 
 .drawer-close {

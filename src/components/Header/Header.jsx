@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export default function Header() {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [pageTitle, setPageTitle] = useState("");
-  const { user } = useSession();
+  const { user, handleLogout } = useSession();
 
   const location = useLocation();
 

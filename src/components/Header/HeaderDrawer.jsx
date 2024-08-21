@@ -54,6 +54,16 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
                 <p className="mb-0">{user.handle}</p>
                 <p>{user.city}</p>
               </div>
+              {user && (
+                <div className="flex justify-start">
+                  <button
+                    className="logout-button-drawer"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
             </>
           ) : (
             <>
@@ -178,13 +188,13 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
                   </div>
                 </div>
               </Link>
-
+              <hr className="text-gray-700" />
               <Link
                 to="/profile"
                 className="drawer-nav-item"
                 onClick={toggleDrawer}
               >
-                <div className="flex  mt-16">
+                <div className="flex">
                   <div className="mr-4 w-6">
                     <i className="fa-solid fa-user"></i>
                   </div>
@@ -210,14 +220,8 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
             </>
           )}
         </nav>
-        {user && (
-          <div className="flex justify-center">
-            <button className="logout-button-drawer" onClick={handleLogout}>
-              Logout
-            </button>
-          </div>
-        )}
-        <div className="bg-gray-700 flex justify-center">
+
+        <div className="bg-gray-700 flex justify-center mt-8">
           <img src={"/H.png"} alt="Hive logo" className="h-36 w-36" />
         </div>
       </div>

@@ -61,7 +61,7 @@
 }
 
 .nav-item {
-  @apply mx-4 no-underline text-black font-thin;
+  @apply mx-4 no-underline text-white font-thin;
 }
 
 .selected-nav-item {
@@ -70,8 +70,12 @@
 
 /* -- BUTTONS -- */
 
-.login-button {
+.login-button-drawer {
   @apply text-gray-700 border border-gray-300 font-semibold rounded-md p-2 mx-1 shadow-lg;
+}
+
+.login-button-nav {
+  @apply text-white border border-white font-semibold rounded-md p-2 mx-1 shadow-lg;
 }
 
 .logout-button-drawer {
@@ -82,8 +86,12 @@
   @apply text-red-700 font-semibold rounded-md;
 }
 
-.register-button {
+.register-button-drawer {
   @apply bg-gray-700 border text-white border-gray-300 font-semibold rounded-md p-2 mx-1 shadow-lg;
+}
+
+.register-button-nav {
+  @apply bg-white border text-gray-700 border-white font-semibold rounded-md p-2 mx-1 shadow-lg;
 }
 
 .confirm-button {

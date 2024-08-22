@@ -11,25 +11,40 @@ export default function Welcome() {
   const { login } = useSession();
   const navigate = useNavigate();
 
-  const confirmationURL = searchParams.get("confirmation_url");
+  // Function to extract accessToken and refreshToken from confirmation_url
+  const getQueryParams = (encodedUrl) => {
+    // Decode the main query params first
+    const mainParams = new URLSearchParams(encodedUrl);
 
-  const getQueryParams = (url) => {
-    const params = new URLSearchParams(url.split("?")[1]);
+    // Get the encoded confirmation_url from the main query params
+    const confirmationUrl = decodeURIComponent(
+      mainParams.get("confirmation_url")
+    );
+
+    // Now, parse the query params within the confirmation_url
+    const confirmationParams = new URLSearchParams(
+      confirmationUrl.split("?")[1]
+    );
+
     return {
-      accessToken: params.get("token"),
-      refreshToken: params.get("refresh_token"),
+      accessToken: confirmationParams.get("token"),
+      refreshToken: confirmationParams.get("refresh_token"),
     };
   };
 
   useEffect(() => {
+    const confirmationURL = searchParams.get("confirmation_url");
+
     if (confirmationURL) {
-      const { accessToken, refreshToken } = getQueryParams(confirmationURL);
+      const { accessToken, refreshToken } = getQueryParams(
+        searchParams.toString()
+      );
 
       if (accessToken) {
-        handleConfirm(accessToken, refreshToken);
+        handleConfirm(accessToken);
       }
     }
-  }, [confirmationURL]);
+  }, [searchParams]);
 
   const handleConfirm = async (accessToken, refreshToken) => {
     try {
@@ -42,10 +57,12 @@ export default function Welcome() {
         };
 
         login(session, userInfo);
-        navigate("/");
+        navigate("/"); // Redirect after successful login
+      } else {
+        console.error("Authentication failed: No user info returned.");
       }
     } catch (error) {
-      console.error("Confirmation process failed:", error);
+      console.error("Confirmation process failed:", error.message);
     }
   };
 

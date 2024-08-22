@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal } from "react-bootstrap";
 
-export default function ConfirmEmail() {
+export default function Welcome() {
   const [show, setShow] = useState(true);
 
   const navigate = useNavigate();
@@ -11,19 +11,16 @@ export default function ConfirmEmail() {
     setShow(false);
     navigate("/");
   };
-
   return (
     <Modal
       show={show}
       onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Email Sent!</Modal.Title>
+        <Modal.Title>Welcome to Hive!</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div className="flex text-center">
-          <p className="text-red-800 m-0">
-            Check your email, we've sent you a link!
-          </p>
+        <div className="flex flex-col justify-center items-center">
+          <button>Complete Signup</button>
         </div>
       </Modal.Body>
     </Modal>

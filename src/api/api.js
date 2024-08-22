@@ -31,8 +31,16 @@ export const loginUser = async (email, password) => {
   return data;
 };
 
-export const authenticateUser = async (accessToken) => {
-  const token = accessToken || localStorage.getItem("token");
+export const emailVerification = async (tokenHash) => {
+const { data } = await api.post("/email-confirmation", {
+  tokenHash,
+})
+console.log("Data returned from emailVerification API request:", data);
+return data;
+}
+
+export const authenticateUser = async () => {
+  const token = localStorage.getItem("token");
 
   if (token) {
     try {

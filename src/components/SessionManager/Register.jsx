@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { registerUser } from "../../api/api";
 import { useNavigate } from "react-router-dom";
-import { Modal, Alert } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import PasswordChecker from "../Utils/PasswordChecker";
 
 export default function Register() {
@@ -64,7 +64,7 @@ export default function Register() {
     userData.append("county", formData.county);
 
     if (profilePic) {
-      userData.append("profile-pic", profilePic);
+      userData.append("profile_pic", profilePic);
     }
 
     if (formData.password !== retypePassword) {
@@ -75,7 +75,7 @@ export default function Register() {
         .then(({ user }) => {
           if (user) {
             setIsLoading(false);
-            navigate("/email-confirmation");
+            navigate("/login");
           } else {
             setIsLoading(false);
             setError(message);
@@ -107,7 +107,6 @@ export default function Register() {
         <Modal.Title>Register</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {error && <Alert variant="danger">{error}</Alert>}
         <form onSubmit={registrationHandler}>
           <div className="form-group mt-2">
             <label htmlFor="full_name">Full Name</label>
@@ -282,6 +281,11 @@ export default function Register() {
           </div>
           <PasswordChecker password={formData.password} />
           <div className="d-flex justify-content-center mt-4">
+            {error && (
+              <p className="text-red-700">
+                Registration failed, please try again.
+              </p>
+            )}
             <button className="confirm-button" type="submit">
               Confirm
             </button>

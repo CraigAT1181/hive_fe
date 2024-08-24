@@ -31,13 +31,19 @@ export const loginUser = async (email, password) => {
   return data;
 };
 
-export const emailVerification = async (tokenHash) => {
-const { data } = await api.post("/email-confirmation", {
-  tokenHash,
-})
-console.log("Data returned from emailVerification API request:", data);
-return data;
-}
+export const emailVerification = async (tokenHash, email) => {
+  try {
+    const response = await api.post("/email-confirmation", {
+      tokenHash,
+      email,
+    });
+    return response;
+  } catch (error) {
+    console.error("Error in email verification:", error.message);
+    throw error;
+  }
+};
+
 
 export const authenticateUser = async () => {
   const token = localStorage.getItem("token");

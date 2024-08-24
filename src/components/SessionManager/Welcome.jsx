@@ -9,51 +9,60 @@ export default function Welcome() {
   const { login } = useSession();
   const navigate = useNavigate();
 
-  const getTokenHash = (encodedUrl) => {
-    const mainParams = new URLSearchParams(encodedUrl);
-
-    const confirmationUrl = decodeURIComponent(
-      mainParams.get("confirmation_url")
-    );
-
-    const confirmationParams = new URLSearchParams(
-      confirmationUrl.split("?")[1]
-    );
-
-    return confirmationParams.get("token");
-  };
-
   useEffect(() => {
+    // Extract confirmation URL and data directly from the query parameters
     const confirmationURL = searchParams.get("confirmation_url");
+    const userData = searchParams.get("data");
 
-    if (confirmationURL) {
-      const tokenHash = getTokenHash(searchParams.toString());
+    if (confirmationURL && userData) {
+      const { tokenHash, email } = getQueryParams(confirmationURL, userData);
 
-      if (tokenHash) {
-        handleConfirm(tokenHash);
+      if (tokenHash && email) {
+        handleConfirm(tokenHash, email);
       } else {
-        console.error("Token hash is missing.");
+        console.error("Token hash or email is missing.");
         navigate("/");
       }
     }
   }, [searchParams, navigate]);
 
-  const handleConfirm = async (tokenHash) => {
+  const getQueryParams = (confirmationUrl, userData) => {
+    // Parse the confirmationUrl to get the tokenHash
+    const confirmationParams = new URLSearchParams(
+      confirmationUrl.split("?")[1]
+    );
+    const tokenHash = confirmationParams.get("token");
+
+    // Manually parse the map-like string format for userData
+    let email;
+    const emailMatch = userData.match(/email:([^ ]+)/);
+    if (emailMatch && emailMatch.length > 1) {
+      email = emailMatch[1]; // Extract the email
+    } else {
+      console.error("Failed to extract email from userData:", userData);
+    }
+
+    return {
+      tokenHash,
+      email,
+    };
+  };
+
+  const handleConfirm = async (tokenHash, email) => {
     try {
-      const response = await emailVerification(tokenHash);
+      const response = await emailVerification(tokenHash, email);
 
       if (response.status === 200) {
         const { session, user } = response.data;
-
         login(session, user);
         navigate("/");
       } else {
         console.error("Email confirmation failed.");
-        navigate("/");
+        // navigate("/");
       }
     } catch (error) {
       console.error("Confirmation process failed:", error.message);
-      navigate("/");
+      // navigate("/");
     }
   };
 

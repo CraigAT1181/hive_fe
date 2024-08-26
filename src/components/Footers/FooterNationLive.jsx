@@ -1,26 +1,14 @@
 import React from "react";
 import { useSession } from "../Context/SessionManager";
-import MediaPreviewPanel from "../PostInputPanel/MediaPreviewPanel";
-import PostInputBox from "../PostInputPanel/PostInputBox";
-import MediaInputPanel from "../PostInputPanel/MediaInputPanel";
+import PostInputPanel from "../PostInputPanel/PostInputPanel";
 
 export default function FooterNationLive() {
   const { user } = useSession();
 
   return (
-    <div className="footer-nation-live">
+    <div className="footer">
       {user ? (
-        <div>
-          <div>
-            <MediaPreviewPanel />
-          </div>
-          <div>
-            <PostInputBox />
-          </div>
-          <div>
-            <MediaInputPanel />
-          </div>
-        </div>
+        <PostInputPanel />
       ) : (
         <div className="flex justify-center">
           <img

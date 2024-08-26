@@ -14,7 +14,7 @@
   @apply flex-grow mx-4;
 }
 
-.footer-default {
+.footer {
   @apply bg-gray-700 sticky bottom-0 w-full text-center items-center p-2 my-0;
 }
 

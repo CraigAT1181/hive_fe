@@ -2,7 +2,7 @@ import React from "react";
 
 export default function FooterDefault() {
   return (
-    <div className="footer-default">
+    <div className="footer">
       <div className="flex justify-center">
         <img
           src={"/H.png"}

@@ -8,7 +8,6 @@ export default function MediaPreviewPanel() {
       {previews.map((preview, index) => {
         <div key={index}>{preview}</div>;
       })}
-      ;
     </div>
   );
 }

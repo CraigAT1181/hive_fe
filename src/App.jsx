@@ -31,11 +31,10 @@ const Welcome = lazy(() => import("./components/SessionManager/Welcome"));
 export default function App() {
   const location = useLocation();
 
-  // Function to select the correct footer based on the route
   const renderFooter = () => {
     const { pathname } = location;
     if (pathname === "/") return <FooterNationLive />;
-    return <FooterDefault />; // Default Footer
+    return <FooterDefault />;
   };
 
   return (

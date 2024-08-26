@@ -1,9 +1,9 @@
 import React from "react";
+import { useSession } from "../Context/SessionManager";
+import SubmitMessagePanel from "../SubmitMessagePanel/SubmitMessagePanel";
 
 export default function FooterNationLive() {
-  return (
-    <div className="footer">
-      <p className="text-white mb-0">NationLive Footer!</p>
-    </div>
-  );
+  const { user } = useSession();
+
+  return <div className="footer">{user && <SubmitMessagePanel />}</div>;
 }

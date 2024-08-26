@@ -5,8 +5,9 @@ export default function SubmitMessagePanel() {
 
   const onSendMessage = () => {
     if (messageInput.trim() !== "") {
-      console.log("Sent!");
+      console.log(messageInput);
     }
+    setMessageInput("");
   };
 
   function handleChange(e) {
@@ -22,9 +23,7 @@ export default function SubmitMessagePanel() {
     <div className="my-4">
       <form onSubmit={handleSend}>
         <div className="w-full relative">
-          <label
-            htmlFor="comment-input"
-            className="form-label"></label>
+          <label htmlFor="comment-input" className="form-label"></label>
           <input
             id="comment-input"
             className="message-input"
@@ -37,7 +36,8 @@ export default function SubmitMessagePanel() {
             <button
               id="comment-button"
               className="message-send-button"
-              type="submit">
+              type="submit"
+            >
               <i className="fa-solid fa-xl text-gray-700 fa-arrow-right"></i>
             </button>
           )}

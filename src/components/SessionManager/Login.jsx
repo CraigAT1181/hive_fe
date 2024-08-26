@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { loginUser } from "../../api/api";
 import { useSession } from "../Context/SessionManager";
 import { useNavigate } from "react-router-dom";
-import { Modal, Alert } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);

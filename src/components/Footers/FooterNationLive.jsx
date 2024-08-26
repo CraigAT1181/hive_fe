@@ -9,7 +9,7 @@ export default function FooterNationLive() {
 
   return (
     <div className="footer-nation-live">
-      {!user && (
+      {user && (
         <div>
           <div>
             <MediaPreviewPanel />

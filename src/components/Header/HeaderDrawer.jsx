@@ -9,6 +9,7 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
 
   const handleRegister = () => {
     navigate("/register");
+    toggleDrawer();
   };
 
   const handleLogin = () => {
@@ -76,7 +77,7 @@ export default function HeaderDrawer({ isDrawerOpen, toggleDrawer }) {
                 </button>
                 <button
                   className="register-button-drawer"
-                  onClick={() => navigate("/register")}
+                  onClick={handleRegister}
                 >
                   Register
                 </button>

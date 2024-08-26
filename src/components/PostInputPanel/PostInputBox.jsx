@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function SubmitMessagePanel() {
+export default function PostInputBox() {
   const [messageInput, setMessageInput] = useState("");
 
   const onSendMessage = () => {
@@ -20,7 +20,7 @@ export default function SubmitMessagePanel() {
   }
 
   return (
-    <div className="my-4">
+    <div className="post-input-box">
       <form onSubmit={handleSend}>
         <div className="w-full relative">
           <label htmlFor="comment-input" className="form-label"></label>

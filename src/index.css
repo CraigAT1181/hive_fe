@@ -14,8 +14,8 @@
   @apply flex-grow mx-4;
 }
 
-.footer {
-  @apply bg-gray-700 fixed bottom-0 w-full text-center items-center p-4;
+.footer-nation-live {
+  @apply bg-gray-700 fixed bottom-0 w-full text-center items-center p-2 my-0;
 }
 
 /* -- ERRORS -- */
@@ -123,6 +123,7 @@
 /* -- POST DISPLAY -- */
 
 .post-display-container {
+  @apply overflow-auto h-80;
 }
 
 /* -- POST CARD -- */
@@ -135,4 +136,14 @@
 }
 
 .post-card-message {
+}
+
+/* -- POST INPUT PANEL -- */
+
+.media-input-panel {
+  @apply flex text-center justify-center mt-2;
+}
+
+.media-icons {
+  @apply text-white mx-2;
 }

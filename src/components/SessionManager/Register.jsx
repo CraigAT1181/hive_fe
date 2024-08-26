@@ -280,7 +280,7 @@ export default function Register() {
             </div>
           </div>
           <PasswordChecker password={formData.password} />
-          <div className="d-flex justify-content-center mt-4">
+          <div className="flex justify-content-center mt-4">
             {error && (
               <p className="text-red-700">
                 Registration failed, please try again.

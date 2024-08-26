@@ -22,7 +22,7 @@ export default function FooterNationLive() {
           </div>
         </div>
       ) : (
-        <div className="bg-gray-700 flex justify-center">
+        <div className="flex justify-center">
           <img
             src={"/H.png"}
             alt="Hive logo"

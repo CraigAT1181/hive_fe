@@ -15,7 +15,7 @@
 }
 
 .footer-nation-live {
-  @apply bg-gray-700 fixed bottom-0 w-full text-center items-center p-2 my-0;
+  @apply bg-gray-700 sticky bottom-0 w-full text-center items-center p-2 my-0;
 }
 
 /* -- ERRORS -- */
@@ -123,7 +123,7 @@
 /* -- POST DISPLAY -- */
 
 .post-display-container {
-  @apply overflow-auto h-80;
+  @apply overflow-auto h-fit;
 }
 
 /* -- POST CARD -- */

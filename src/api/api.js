@@ -2,7 +2,7 @@ import { handleInvalidToken } from "../components/Utils/handleInvalidToken.jsx";
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:9090",
+  baseURL: "https://hive-be-ggxy.onrender.com",
 });
 
 export default api;
@@ -27,7 +27,7 @@ export const loginUser = async (email, password) => {
     email,
     password,
   });
-  
+
   return data;
 };
 
@@ -43,7 +43,6 @@ export const emailVerification = async (tokenHash, email) => {
     throw error;
   }
 };
-
 
 export const authenticateUser = async () => {
   const token = localStorage.getItem("token");

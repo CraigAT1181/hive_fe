@@ -9,7 +9,7 @@ export default function FooterNationLive() {
 
   return (
     <div className="footer-nation-live">
-      {user && (
+      {user ? (
         <div>
           <div>
             <MediaPreviewPanel />
@@ -20,6 +20,14 @@ export default function FooterNationLive() {
           <div>
             <MediaInputPanel />
           </div>
+        </div>
+      ) : (
+        <div className="bg-gray-700 flex justify-center">
+          <img
+            src={"/H.png"}
+            alt="Hive logo"
+            className="h-20 w-20 mt-2"
+          />
         </div>
       )}
     </div>

@@ -2,8 +2,12 @@ import React from "react";
 
 export default function FooterDefault() {
   return (
-    <div className="footer">
-      <p className="text-white mb-0">&copy; Hive 2024</p>
+    <div className="bg-gray-700 flex justify-center">
+      <img
+        src={"/H.png"}
+        alt="Hive logo"
+        className="h-20 w-20 mt-2"
+      />
     </div>
   );
 }

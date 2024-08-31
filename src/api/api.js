@@ -90,3 +90,14 @@ export const deleteUser = async (userId) => {
     throw error;
   }
 };
+
+export const fetchPosts = async () => {
+  try {
+    const data = await api.get('/posts')
+
+    return data;
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    throw error;
+  }
+}

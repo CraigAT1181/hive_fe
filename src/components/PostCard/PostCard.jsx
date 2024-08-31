@@ -1,27 +1,23 @@
 import React from "react";
 
-export default function PostCard() {
+export default function PostCard({ post }) {
+  console.log("PostCard:", post);
   return (
     <div className="post-card-container">
       <div className="min-w-16 mx-2">
         <img
           className="w-16 h-16 object-cover rounded"
-          src={"/profile-pic.jpg"}
+          src={post.users.profile_pic}
           alt="profile pic"
         />
       </div>
       <div className="flex-grow">
         <div className="flex justify-between lg:justify-start font-semibold">
-          <p className="">CraigT</p>
-          <p className="lg:mx-4 font-thin">@craigtipple</p>
+          <p className="">{post.users.full_name}</p>
+          <p className="lg:mx-4 font-thin">{post.users.handle}</p>
           <p className="">1h</p>
         </div>
-        <div>
-          Post text will appear here, and I should write a lot ot make sure that
-          the text behaves I hope it will. For example, if someone was to write
-          a very long post, it should expand to comfortably display the entire
-          thing.
-        </div>
+        <div>{post.content}</div>
         <div className="flex justify-between lg:justify-center mt-2">
           <p className="mb-0 lg:mx-4">
             <i className="fa-solid text-gray-400 fa-comment-dots"></i>

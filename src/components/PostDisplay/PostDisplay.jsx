@@ -54,17 +54,25 @@ export default function PostDisplay({ posts }) {
               </div>
             </div>
           )}
+
           <div className="selected-post-container">
             <div onClick={() => handlePostClick(selectedPost.id)}>
-              <PostCard post={selectedPost} />
+              <PostCard
+                post={selectedPost}
+                parentName={parentPost?.users?.handle}
+              />
             </div>
           </div>
+
           <div className="replies-container">
             {replies &&
               replies.map((reply) => {
                 return (
                   <div key={reply.id} onClick={() => handlePostClick(reply.id)}>
-                    <PostCard post={reply} />
+                    <PostCard
+                      post={reply}
+                      parentName={selectedPost.users.handle}
+                    />
                   </div>
                 );
               })}

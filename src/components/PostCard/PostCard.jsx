@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function PostCard({ post }) {
+export default function PostCard({ post, parentName = null }) {
   // console.log("PostCard:", post);
   return (
     <div className="post-card-container">
@@ -17,6 +17,13 @@ export default function PostCard({ post }) {
           <p className="lg:mx-4 font-thin">{post.users.handle}</p>
           <p className="">1h</p>
         </div>
+        {post.is_reply === true && parentName && (
+          <div>
+            <span className="text-sm font-thin mb-2">
+              Replying to {parentName}
+            </span>
+          </div>
+        )}
         <div>{post.content}</div>
         <div className="flex justify-between lg:justify-center mt-2">
           <p className="mb-0 lg:mx-4">

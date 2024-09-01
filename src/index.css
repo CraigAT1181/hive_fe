@@ -137,6 +137,7 @@
 }
 
 .replies-container {
+  @apply pl-4 text-sm;
 }
 
 /* -- POST CARD -- */

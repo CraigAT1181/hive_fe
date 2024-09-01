@@ -130,6 +130,15 @@
   @apply overflow-auto h-fit;
 }
 
+.parent-post-container {
+}
+
+.selected-post-container {
+}
+
+.replies-container {
+}
+
 /* -- POST CARD -- */
 
 .post-card-container {

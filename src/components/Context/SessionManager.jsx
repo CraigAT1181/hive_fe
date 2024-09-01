@@ -21,8 +21,8 @@ export function SessionProvider({ children }) {
     };
 
     fetchUser();
-    
-    console.log(user);
+
+    // console.log(user);
   }, []);
 
   const login = (session, user) => {

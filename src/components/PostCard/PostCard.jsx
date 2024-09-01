@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function PostCard({ post }) {
-  console.log("PostCard:", post);
+  // console.log("PostCard:", post);
   return (
     <div className="post-card-container">
       <div className="min-w-16 mx-2">

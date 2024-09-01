@@ -97,7 +97,18 @@ export const fetchPosts = async () => {
 
     return data;
   } catch (error) {
-    console.error("Error deleting user:", error);
+    console.error("Error fetching posts:", error);
     throw error;
   }
+}
+
+export const fetchSinglePost = async (postId) => {
+try {
+const data = await api.get(`/posts/${postId}`)
+
+return data
+} catch (error) {
+  console.error("Error fetching single post data:", error);
+  throw error;
+}
 }

@@ -3,7 +3,7 @@ import PostCard from "../PostCard/PostCard";
 import { fetchSinglePost } from "../../api/api";
 
 export default function PostDisplay({ posts }) {
-  // console.log("postDisplay:", posts);
+  console.log("postDisplay:", posts);
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -50,7 +50,7 @@ export default function PostDisplay({ posts }) {
           {parentPost && (
             <div className="parent-post-container">
               <div onClick={() => handlePostClick(parentPost.id)}>
-                <PostCard post={parentPost} />
+                <PostCard post={parentPost} parentName={null} />
               </div>
             </div>
           )}

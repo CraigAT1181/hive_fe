@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function PostCard({ post, parentName = null }) {
+export default function PostCard({ post, parentName = null, replies = null }) {
   // console.log("PostCard:", post);
   return (
     <div className="post-card-container">
@@ -26,22 +26,25 @@ export default function PostCard({ post, parentName = null }) {
         )}
         <div>{post.content}</div>
         <div className="flex justify-between lg:justify-center mt-2">
-          <p className="mb-0 lg:mx-4">
+          <div className="flex items-center mb-0 lg:mx-4">
             <i className="fa-solid text-gray-400 fa-comment-dots"></i>
-          </p>
-          <p className="mb-0 lg:mx-4">
+            <p className="mb-0 ml-1 font-thin text-sm">{post.reply_count}</p>
+          </div>
+          <div className="flex items-center mb-0 lg:mx-4">
             <i className="fa-solid text-gray-400 fa-share-nodes"></i>
-          </p>
-          <p className="mb-0 lg:mx-4">
+            <p className="mb-0 ml-1 font-thin text-sm">{post.retweets_count}</p>
+          </div>
+          <div className="flex items-center mb-0 lg:mx-4">
             <i className="fa-solid text-gray-400 fa-thumbs-up"></i>
-          </p>
-          <p className="mb-0 lg:mx-4">
+            <p className="mb-0 ml-1 font-thin text-sm">{post.likes_count}</p>
+          </div>
+          <div className="mb-0 lg:mx-4">
             <i className="fa-solid text-gray-400 fa-bookmark"></i>
-          </p>
+          </div>
           {"|"}
-          <p className="mb-0 lg:mx-4">
+          <div className="mb-0 lg:mx-4">
             <i className="fa-solid text-gray-400 fa-share-from-square"></i>
-          </p>
+          </div>
         </div>
         {/* LOGIC TO CHECK IF THERE'S A RETWEET. IF SO, RENDER DIV BELOW */}
         {/* <div className="border border-gray-500 p-2 mt-4">

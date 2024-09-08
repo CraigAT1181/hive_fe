@@ -1,9 +1,10 @@
 import React from "react";
 
-export default function PostCard({ post, parentName = null, replies = null }) {
-  // console.log("PostCard:", post);
+export default function PostCard({ post, parentName = null }) {
+
+
   return (
-    <div className="post-card-container">
+    <div className="post-card-container relative">
       <div className="min-w-16 mx-2">
         <img
           className="w-16 h-16 object-cover rounded"
@@ -13,9 +14,9 @@ export default function PostCard({ post, parentName = null, replies = null }) {
       </div>
       <div className="flex-grow">
         <div className="flex justify-between lg:justify-start font-semibold">
-          <p className="">{post.users.full_name}</p>
+          <p>{post.users.full_name}</p>
           <p className="lg:mx-4 font-thin">{post.users.handle}</p>
-          <p className="">1h</p>
+          <p>1h</p>
         </div>
         {post.is_reply === true && parentName && (
           <div>
@@ -25,6 +26,20 @@ export default function PostCard({ post, parentName = null, replies = null }) {
           </div>
         )}
         <div>{post.content}</div>
+        {post.media && post.media.length > 0 && (
+          <div className="grid grid-cols-2 gap-1 md:flex">
+            {post.media.map((media) => (
+              <div key={media.media_url}>
+                <img
+                  src={media.media_url}
+                  alt="Attached media"
+                  className="cursor-pointer w-20 h-20 object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        )}
+
         <div className="flex justify-between lg:justify-center mt-2">
           <div className="flex items-center mb-0 lg:mx-4">
             <i className="fa-solid text-gray-400 fa-comment-dots"></i>
@@ -46,10 +61,6 @@ export default function PostCard({ post, parentName = null, replies = null }) {
             <i className="fa-solid text-gray-400 fa-share-from-square"></i>
           </div>
         </div>
-        {/* LOGIC TO CHECK IF THERE'S A RETWEET. IF SO, RENDER DIV BELOW */}
-        {/* <div className="border border-gray-500 p-2 mt-4">
-          A shortened version of the shared tweet would appear here.
-        </div> */}
       </div>
     </div>
   );

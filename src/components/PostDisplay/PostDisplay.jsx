@@ -52,6 +52,7 @@ export default function PostDisplay({ posts }) {
               <div onClick={() => handlePostClick(parentPost.id)}>
                 <PostCard post={parentPost} parentName={null} />
               </div>
+              <hr />
             </div>
           )}
 
@@ -81,13 +82,13 @@ export default function PostDisplay({ posts }) {
       ) : (
         <>
           {posts.map((post) => {
-            // if (post.is_reply === false) {
-            return (
-              <div key={post.id} onClick={() => handlePostClick(post.id)}>
-                <PostCard post={post} />
-              </div>
-            );
-            // }
+            if (post.is_reply === false) {
+              return (
+                <div key={post.id} onClick={() => handlePostClick(post.id)}>
+                  <PostCard post={post} />
+                </div>
+              );
+            }
           })}
         </>
       )}

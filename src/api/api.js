@@ -2,7 +2,7 @@ import { handleInvalidToken } from "../components/Utils/handleInvalidToken.jsx";
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:9090",
+  baseURL: "http://localhost:4000",
 });
 
 export default api;

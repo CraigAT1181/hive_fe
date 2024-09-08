@@ -37,7 +37,7 @@ export default function Login() {
       })
       .catch(() => {
         setIsLoading(false);
-        setError("Invalid username or password.");
+        setError("E-mail or password not recognised.");
       });
   };
 

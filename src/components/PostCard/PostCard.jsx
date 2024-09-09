@@ -1,7 +1,18 @@
 import React from "react";
 
-export default function PostCard({ post, parentName = null }) {
+import { format, formatDistanceToNow } from "date-fns";
 
+export default function PostCard({ post, parentName = null }) {
+  const formattedTime = formatDistanceToNow(new Date(post.created_at), {
+    addSuffix: true,
+  });
+
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return format(date, `EEEE, do 'of' MMMM yyyy 'at' h:mma`);
+  }
+
+  const formattedDate = formatDate(post.created_at);
 
   return (
     <div className="post-card-container relative">
@@ -16,7 +27,6 @@ export default function PostCard({ post, parentName = null }) {
         <div className="flex justify-between lg:justify-start font-semibold">
           <p>{post.users.full_name}</p>
           <p className="lg:mx-4 font-thin">{post.users.handle}</p>
-          <p>1h</p>
         </div>
         {post.is_reply === true && parentName && (
           <div>
@@ -39,6 +49,10 @@ export default function PostCard({ post, parentName = null }) {
             ))}
           </div>
         )}
+
+        <p className="text-sm font-semibold mb-0 mt-2">
+          {formattedTime} <span className="font-thin">({formattedDate})</span>
+        </p>
 
         <div className="flex justify-between lg:justify-center mt-2">
           <div className="flex items-center mb-0 lg:mx-4">

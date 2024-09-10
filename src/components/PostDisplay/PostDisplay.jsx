@@ -9,6 +9,7 @@ export default function PostDisplay({ posts }) {
   const [parentPost, setParentPost] = useState(null);
   const [replies, setReplies] = useState([]);
   const [postHistory, setPostHistory] = useState([]);
+  const [replyingToPostId, setReplyingToPostId] = useState(null); // Store postId for replies
 
   const handlePostClick = (postId) => {
     if (!selectedPost) {
@@ -33,6 +34,11 @@ export default function PostDisplay({ posts }) {
         setIsLoading(false);
         setError(error.message);
       });
+  };
+
+  const handleReplyClick = (postId) => {
+    // Toggle reply input for the selected post
+    setReplyingToPostId(replyingToPostId === postId ? null : postId);
   };
 
   const handleBackClick = () => {
@@ -68,8 +74,11 @@ export default function PostDisplay({ posts }) {
         <>
           {postHistory.length > 0 && (
             <div className="flex justify-end mb-2">
-              <button className="relative bg-gray-700 text-white text-center py-1 px-8 rounded-full" onClick={handleBackClick}>
-              <i className="fa-solid absolute left-2 top-2 fa-chevron-left"></i> Back
+              <button
+                className="relative bg-gray-700 text-white text-center py-1 px-8 rounded-full"
+                onClick={handleBackClick}>
+                <i className="fa-solid absolute left-2 top-2 fa-chevron-left"></i>{" "}
+                Back
               </button>
             </div>
           )}
@@ -80,6 +89,8 @@ export default function PostDisplay({ posts }) {
                 <PostCard
                   post={parentPost}
                   parentName={null}
+                  handleReplyClick={handleReplyClick}
+                  replyingToPostId={replyingToPostId}
                 />
               </div>
               <hr />
@@ -91,6 +102,8 @@ export default function PostDisplay({ posts }) {
               <PostCard
                 post={selectedPost}
                 parentName={parentPost?.users?.handle}
+                handleReplyClick={handleReplyClick}
+                replyingToPostId={replyingToPostId}
               />
             </div>
           </div>
@@ -104,6 +117,8 @@ export default function PostDisplay({ posts }) {
                   <PostCard
                     post={reply}
                     parentName={selectedPost.users.handle}
+                    handleReplyClick={handleReplyClick}
+                    replyingToPostId={replyingToPostId}
                   />
                 </div>
               ))}
@@ -117,7 +132,11 @@ export default function PostDisplay({ posts }) {
                 <div
                   key={post.id}
                   onClick={() => handlePostClick(post.id)}>
-                  <PostCard post={post} />
+                  <PostCard
+                    post={post}
+                    handleReplyClick={handleReplyClick}
+                    replyingToPostId={replyingToPostId}
+                  />
                 </div>
               );
             }

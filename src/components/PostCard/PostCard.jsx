@@ -1,8 +1,14 @@
-import React from "react";
-
+import React, { useState } from "react";
 import { format, formatDistanceToNow } from "date-fns";
 
-export default function PostCard({ post, parentName = null }) {
+export default function PostCard({
+  post,
+  parentName = null,
+  handleReplyClick,
+  replyingToPostId,
+}) {
+  const [replyContent, setReplyContent] = useState("");
+
   const formattedTime = formatDistanceToNow(new Date(post.created_at), {
     addSuffix: true,
   });
@@ -13,6 +19,14 @@ export default function PostCard({ post, parentName = null }) {
   }
 
   const formattedDate = formatDate(post.created_at);
+
+  const handleReplySubmit = (e) => {
+    e.preventDefault();
+    console.log(replyContent);
+    
+    // Handle reply submission (e.g., make API call)
+    setReplyContent("");
+  };
 
   return (
     <div className="post-card-container relative">
@@ -55,10 +69,18 @@ export default function PostCard({ post, parentName = null }) {
         </p>
 
         <div className="flex justify-between lg:justify-center mt-2">
-          <div className="flex items-center mb-0 lg:mx-4">
+          {/* Reply button */}
+          <div
+            className="flex items-center mb-0 lg:mx-4 cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleReplyClick(post.id);
+            }}>
             <i className="fa-solid text-gray-400 fa-comment-dots"></i>
             <p className="mb-0 ml-1 font-thin text-sm">{post.reply_count}</p>
           </div>
+
+          {/* Other buttons */}
           <div className="flex items-center mb-0 lg:mx-4">
             <i className="fa-solid text-gray-400 fa-share-nodes"></i>
             <p className="mb-0 ml-1 font-thin text-sm">{post.retweets_count}</p>
@@ -75,6 +97,29 @@ export default function PostCard({ post, parentName = null }) {
             <i className="fa-solid text-gray-400 fa-share-from-square"></i>
           </div>
         </div>
+
+        {/* Conditionally render reply input for this post */}
+        {replyingToPostId === post.id && (
+          <div
+            className="reply-input-container mt-2"
+            onClick={(e) => e.stopPropagation()}>
+            <form onSubmit={handleReplySubmit}>
+              <textarea
+                className="w-full p-2 border border-gray-300 rounded"
+                onClick={(e) => e.stopPropagation()}
+                placeholder="Write your reply..."
+                value={replyContent}
+                onChange={(e) => setReplyContent(e.target.value)}
+              />
+              <button
+                type="submit"
+                className="mt-2 bg-blue-500 text-white px-4 py-2 rounded"
+                onClick={(e) => e.stopPropagation()}>
+                Submit Reply
+              </button>
+            </form>
+          </div>
+        )}
       </div>
     </div>
   );

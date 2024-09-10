@@ -24,6 +24,14 @@ export default function NationLive() {
       });
   };
 
+  if (isLoading) {
+    return (
+      <div>
+        <span>Loading...</span>
+      </div>
+    );
+  }
+
   if (error) {
     return (
       <div>

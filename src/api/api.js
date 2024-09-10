@@ -27,7 +27,7 @@ export const loginUser = async (email, password) => {
     email,
     password,
   });
-  
+
   return data;
 };
 
@@ -43,7 +43,6 @@ export const emailVerification = async (tokenHash, email) => {
     throw error;
   }
 };
-
 
 export const authenticateUser = async () => {
   const token = localStorage.getItem("token");
@@ -93,22 +92,33 @@ export const deleteUser = async (userId) => {
 
 export const fetchPosts = async () => {
   try {
-    const data = await api.get('/posts')
+    const data = await api.get("/posts");
 
     return data;
   } catch (error) {
     console.error("Error fetching posts:", error);
     throw error;
   }
-}
+};
 
 export const fetchSinglePost = async (postId) => {
-try {
-const data = await api.get(`/posts/${postId}`)
+  try {
+    const data = await api.get(`/posts/${postId}`);
 
-return data
-} catch (error) {
-  console.error("Error fetching single post data:", error);
-  throw error;
-}
+    return data;
+  } catch (error) {
+    console.error("Error fetching single post data:", error);
+    throw error;
+  }
+};
+
+export const addPost = async (formData) => {
+  try {
+    const data = await api.post("/posts", formData);
+
+    return data;
+  } catch (error) {
+    console.error("Error adding post:", error);
+    throw error;
+  }
 }

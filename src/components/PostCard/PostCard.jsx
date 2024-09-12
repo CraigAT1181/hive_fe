@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { format, formatDistanceToNow } from "date-fns";
+import MediaInputPanel from "../PostInputPanel/MediaInputPanel";
 
 export default function PostCard({
   post,
@@ -8,6 +9,9 @@ export default function PostCard({
   replyingToPostId,
 }) {
   const [replyContent, setReplyContent] = useState("");
+  const [mediaUploads, setMediaUploads] = useState([]);
+
+  // Format dates for rendering
 
   const formattedTime = formatDistanceToNow(new Date(post.created_at), {
     addSuffix: true,
@@ -20,10 +24,18 @@ export default function PostCard({
 
   const formattedDate = formatDate(post.created_at);
 
+  // Handle media upload
+
+  const handleMediaUpload = () => {
+
+  }
+
+  // Handle reply submission
+
   const handleReplySubmit = (e) => {
     e.preventDefault();
     console.log(replyContent);
-    
+
     // Handle reply submission (e.g., make API call)
     setReplyContent("");
   };
@@ -101,7 +113,7 @@ export default function PostCard({
         {/* Conditionally render reply input for this post */}
         {replyingToPostId === post.id && (
           <div
-            className="reply-input-container mt-2"
+            className="mt-2"
             onClick={(e) => e.stopPropagation()}>
             <form onSubmit={handleReplySubmit}>
               <textarea
@@ -111,13 +123,15 @@ export default function PostCard({
                 value={replyContent}
                 onChange={(e) => setReplyContent(e.target.value)}
               />
+              <MediaInputPanel />
               <button
                 type="submit"
-                className="mt-2 bg-blue-500 text-white px-4 py-2 rounded"
+                className="mt-2 bg-gray-700 text-white px-4 py-2 rounded"
                 onClick={(e) => e.stopPropagation()}>
-                Submit Reply
+                Reply
               </button>
             </form>
+            {mediaUploads && mediaUploads.length > 0 && <MediaPreviewPanel />}
           </div>
         )}
       </div>

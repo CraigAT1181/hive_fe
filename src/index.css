@@ -155,9 +155,9 @@
 /* -- POST INPUT PANEL -- */
 
 .media-input-panel {
-  @apply flex text-center justify-center mt-2;
+  @apply flex;
 }
 
 .media-icons {
-  @apply text-white mx-2;
+  @apply text-gray-700 mx-4;
 }

@@ -7,17 +7,20 @@ import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
-  const [pageTitle, setPageTitle] = useState("");
+  const [roomTitle, setroomTitle] = useState("");
   const { user, handleLogout } = useSession();
 
   const location = useLocation();
 
   useEffect(() => {
     const path = location.pathname.substring(1).toUpperCase() || "Nation Live";
+    let title;
 
-    const title = path.split("-").join(" ");
+    if (!path.includes("POSTS")) {
+      title = path.split("-").join(" ");
+    }
 
-    setPageTitle(title);
+    setroomTitle(title);
   }, [location]);
 
   const toggleDrawer = () => {
@@ -56,11 +59,11 @@ export default function Header() {
         </button>
       </div>
       <div className="flex flex-grow justify-center lg:hidden">
-        <span className="text-3xl font-thin">{pageTitle}</span>
+        <span className="text-3xl font-thin">{roomTitle}</span>
       </div>
 
       <div className="hidden lg:block">
-        <HeaderNav pageTitle={pageTitle} />
+        <HeaderNav roomTitle={roomTitle} />
       </div>
       <div className="hidden lg:block">
         {user ? (

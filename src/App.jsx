@@ -9,6 +9,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./index.css";
 
 const NationLive = lazy(() => import("./components/NationLive/NationLive"));
+const PostThread = lazy(() => import("./components/PostThread/PostThread"));
 const Community = lazy(() => import("./components/Community/Community"));
 const SpeakersCorner = lazy(() =>
   import("./components/SpeakersCorner/SpeakersCorner")
@@ -51,6 +52,7 @@ export default function App() {
           >
             <Routes>
               <Route path="/" element={<NationLive />} />
+              <Route path="/posts/:postId" element={<PostThread />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/town-hall" element={<TownHall />} />
               <Route path="/speakers-corner" element={<SpeakersCorner />} />

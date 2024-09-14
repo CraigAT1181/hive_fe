@@ -2,14 +2,10 @@ import React, { useState } from "react";
 import { format, formatDistanceToNow } from "date-fns";
 import MediaInputPanel from "../PostInputPanel/MediaInputPanel";
 
-export default function PostCard({
-  post,
-  parentName = null,
-  handleReplyClick,
-  replyingToPostId,
-}) {
+export default function PostCard({ post, parentName = null, handlePostClick }) {
   const [replyContent, setReplyContent] = useState("");
   const [mediaUploads, setMediaUploads] = useState([]);
+  const [replyingToPostId, setReplyingToPostId] = useState(null);
 
   // Format dates for rendering
 
@@ -26,15 +22,17 @@ export default function PostCard({
 
   // Handle media upload
 
-  const handleMediaUpload = () => {
+  // const handleMediaUpload = () => {};
 
-  }
+  const handleReplyClick = (postId) => {
+    // Toggle reply input for the selected post
+    setReplyingToPostId(replyingToPostId === postId ? null : postId);
+  };
 
   // Handle reply submission
 
   const handleReplySubmit = (e) => {
     e.preventDefault();
-    console.log(replyContent);
 
     // Handle reply submission (e.g., make API call)
     setReplyContent("");
@@ -61,7 +59,7 @@ export default function PostCard({
             </span>
           </div>
         )}
-        <div>{post.content}</div>
+        <div onClick={() => handlePostClick(post.id)}>{post.content}</div>
         {post.media && post.media.length > 0 && (
           <div className="grid grid-cols-2 gap-1 md:flex">
             {post.media.map((media) => (
@@ -87,7 +85,8 @@ export default function PostCard({
             onClick={(e) => {
               e.stopPropagation();
               handleReplyClick(post.id);
-            }}>
+            }}
+          >
             <i className="fa-solid text-gray-400 fa-comment-dots"></i>
             <p className="mb-0 ml-1 font-thin text-sm">{post.reply_count}</p>
           </div>
@@ -112,9 +111,7 @@ export default function PostCard({
 
         {/* Conditionally render reply input for this post */}
         {replyingToPostId === post.id && (
-          <div
-            className="mt-2"
-            onClick={(e) => e.stopPropagation()}>
+          <div className="mt-2" onClick={(e) => e.stopPropagation()}>
             <form onSubmit={handleReplySubmit}>
               <textarea
                 className="w-full p-2 border border-gray-300 rounded"
@@ -127,7 +124,8 @@ export default function PostCard({
               <button
                 type="submit"
                 className="mt-2 bg-gray-700 text-white px-4 py-2 rounded"
-                onClick={(e) => e.stopPropagation()}>
+                onClick={(e) => e.stopPropagation()}
+              >
                 Reply
               </button>
             </form>

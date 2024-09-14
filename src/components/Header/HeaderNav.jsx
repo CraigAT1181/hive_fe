@@ -2,7 +2,7 @@ import React from "react";
 import { useSession } from "../Context/SessionManager";
 import { Link } from "react-router-dom";
 
-export default function HeaderNav({ pageTitle }) {
+export default function HeaderNav({ roomTitle }) {
   const { user } = useSession();
 
   return (
@@ -10,7 +10,7 @@ export default function HeaderNav({ pageTitle }) {
       <Link
         to="/"
         className={`nav-item ${
-          pageTitle === "Nation Live" ? "selected-nav-item" : ""
+          roomTitle === "Nation Live" ? "selected-nav-item" : ""
         }`}
       >
         Nation Live
@@ -18,7 +18,7 @@ export default function HeaderNav({ pageTitle }) {
       <Link
         to="/speakers-corner"
         className={`nav-item ${
-          pageTitle === "SPEAKERS CORNER" ? "selected-nav-item" : ""
+          roomTitle === "SPEAKERS CORNER" ? "selected-nav-item" : ""
         }`}
       >
         Speaker's Corner
@@ -28,7 +28,7 @@ export default function HeaderNav({ pageTitle }) {
           <Link
             to="/community"
             className={`nav-item ${
-              pageTitle === "COMMUNITY" ? "selected-nav-item" : ""
+              roomTitle === "COMMUNITY" ? "selected-nav-item" : ""
             }`}
           >
             Community
@@ -37,7 +37,7 @@ export default function HeaderNav({ pageTitle }) {
           <Link
             to="/town-hall"
             className={`nav-item ${
-              pageTitle === "TOWN HALL" ? "selected-nav-item" : ""
+              roomTitle === "TOWN HALL" ? "selected-nav-item" : ""
             }`}
           >
             Town Hall
@@ -48,7 +48,7 @@ export default function HeaderNav({ pageTitle }) {
       <Link
         to="/protests"
         className={`nav-item ${
-          pageTitle === "PROTESTS" ? "selected-nav-item" : ""
+          roomTitle === "PROTESTS" ? "selected-nav-item" : ""
         }`}
       >
         Protests
@@ -58,7 +58,7 @@ export default function HeaderNav({ pageTitle }) {
           <Link
             to="/messages"
             className={`nav-item ${
-              pageTitle === "MESSAGES" ? "selected-nav-item" : ""
+              roomTitle === "MESSAGES" ? "selected-nav-item" : ""
             }`}
           >
             Messages
@@ -66,7 +66,7 @@ export default function HeaderNav({ pageTitle }) {
           <Link
             to="/notifications"
             className={`nav-item ${
-              pageTitle === "NOTIFICATIONS" ? "selected-nav-item" : ""
+              roomTitle === "NOTIFICATIONS" ? "selected-nav-item" : ""
             }`}
           >
             Notifications
@@ -80,7 +80,7 @@ export default function HeaderNav({ pageTitle }) {
           <Link
             to="/profile"
             className={`nav-item ${
-              pageTitle === "PROFILE" ? "selected-nav-item" : ""
+              roomTitle === "PROFILE" ? "selected-nav-item" : ""
             }`}
           >
             Profile
@@ -88,7 +88,7 @@ export default function HeaderNav({ pageTitle }) {
           <Link
             to="/settings"
             className={`nav-item ${
-              pageTitle === "SETTINGS" ? "selected-nav-item" : ""
+              roomTitle === "SETTINGS" ? "selected-nav-item" : ""
             }`}
           >
             Settings

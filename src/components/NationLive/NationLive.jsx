@@ -1,48 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PostDisplay from "../PostDisplay/PostDisplay";
-import { fetchPosts } from "../../api/api";
 
 export default function NationLive() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    getPosts();
-  }, []);
-
-  const getPosts = () => {
-    setIsLoading(true);
-    fetchPosts()
-      .then(({ data: { posts } }) => {
-        setIsLoading(false);
-        setPosts(posts);
-      })
-      .catch(({ error }) => {
-        setIsLoading(false);
-        setError(error);
-      });
-  };
-
-  if (isLoading) {
-    return (
-      <div>
-        <span>Loading...</span>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div>
-        <span>Error: {error}</span>
-      </div>
-    );
-  }
-
   return (
     <div className="nation-live-container">
-      {posts && <PostDisplay posts={posts} />}
+      <PostDisplay room={"Nation Live"} />
     </div>
   );
 }

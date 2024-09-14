@@ -90,9 +90,9 @@ export const deleteUser = async (userId) => {
   }
 };
 
-export const fetchPosts = async () => {
+export const fetchPosts = async (room) => {
   try {
-    const data = await api.get("/posts");
+    const data = await api.get(`/posts/${room}`);
 
     return data;
   } catch (error) {
@@ -102,9 +102,10 @@ export const fetchPosts = async () => {
 };
 
 export const fetchSinglePost = async (postId) => {
+  
   try {
-    const data = await api.get(`/posts/${postId}`);
-
+    const data = await api.get(`/post/${postId}`);
+console.log("API data", data);
     return data;
   } catch (error) {
     console.error("Error fetching single post data:", error);

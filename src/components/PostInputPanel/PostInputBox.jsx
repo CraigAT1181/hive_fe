@@ -5,7 +5,6 @@ export default function PostInputBox() {
 
   const onSendMessage = () => {
     if (messageInput.trim() !== "") {
-      console.log(messageInput);
     }
     setMessageInput("");
   };

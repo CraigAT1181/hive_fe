@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { format, formatDistanceToNow } from "date-fns";
-import MediaInputPanel from "../PostInputPanel/MediaInputPanel";
+import PostSubmit from "../PostSubmit/PostSubmit";
 
 export default function PostCard({ post, parentName = null, handlePostClick }) {
-  const [replyContent, setReplyContent] = useState("");
-  const [mediaUploads, setMediaUploads] = useState([]);
   const [replyingToPostId, setReplyingToPostId] = useState(null);
 
   // Format dates for rendering
@@ -31,13 +29,6 @@ export default function PostCard({ post, parentName = null, handlePostClick }) {
 
   // Handle reply submission
 
-  const handleReplySubmit = (e) => {
-    e.preventDefault();
-
-    // Handle reply submission (e.g., make API call)
-    setReplyContent("");
-  };
-
   return (
     <div className="post-card-container relative">
       <div className="min-w-16 mx-2">
@@ -48,9 +39,9 @@ export default function PostCard({ post, parentName = null, handlePostClick }) {
         />
       </div>
       <div className="flex-grow">
-        <div className="flex justify-between lg:justify-start font-semibold">
+        <div className="flex lg:justify-start font-semibold">
           <p>{post.users.full_name}</p>
-          <p className="lg:mx-4 font-thin">{post.users.handle}</p>
+          <p className="mx-4 font-thin">{post.users.handle}</p>
         </div>
         {post.is_reply === true && parentName && (
           <div>
@@ -110,28 +101,7 @@ export default function PostCard({ post, parentName = null, handlePostClick }) {
         </div>
 
         {/* Conditionally render reply input for this post */}
-        {replyingToPostId === post.id && (
-          <div className="mt-2" onClick={(e) => e.stopPropagation()}>
-            <form onSubmit={handleReplySubmit}>
-              <textarea
-                className="w-full p-2 border border-gray-300 rounded"
-                onClick={(e) => e.stopPropagation()}
-                placeholder="Write your reply..."
-                value={replyContent}
-                onChange={(e) => setReplyContent(e.target.value)}
-              />
-              <MediaInputPanel />
-              <button
-                type="submit"
-                className="mt-2 bg-gray-700 text-white px-4 py-2 rounded"
-                onClick={(e) => e.stopPropagation()}
-              >
-                Reply
-              </button>
-            </form>
-            {mediaUploads && mediaUploads.length > 0 && <MediaPreviewPanel />}
-          </div>
-        )}
+        {replyingToPostId === post.id && <PostSubmit />}
       </div>
     </div>
   );
